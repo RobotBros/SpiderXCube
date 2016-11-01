@@ -1,0 +1,9 @@
+---- LED Matches (13 in 2 files) ----
+Config.h:#define  LED    P04  // 开发板上的指示灯
+Main.c:  	LED = 1;        	  														// 熄灭指示灯
+Main.c:        			LED = ~LED;												// USB send data to RF TX buffer and send success, flash
+Main.c:			//LED = ~LED;													// RF RX data to USB out buffer and USB data send to PC success, flash
+Main.c:		{LED = 0;}
+Main.c:   //LED = ~LED;
+Main.c:		//LED = ~LED;
+Main.c:  	//LED =~LED;

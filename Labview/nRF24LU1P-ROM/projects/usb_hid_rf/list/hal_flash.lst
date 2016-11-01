@@ -1,0 +1,163 @@
+C51 COMPILER V9.55   HAL_FLASH                                                             10/17/2016 12:49:44 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE HAL_FLASH
+OBJECT MODULE PLACED IN .\build\hal_flash.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\hal\nrf24lu1p\hal_flash.c LARGE OBJECTADVANCED OPTIMIZE(8,SPEED) R
+                    -EGFILE(.\build\usb_hid_rf.ORC) BROWSE NOINTPROMOTE INCDIR(..\..\hal;..\..\hal\nrf24l01p;..\..\hal\nrf24lu1p;..\..\compil
+                    -er\c51;..\..\compiler\common;..\common) PRINT(.\list\hal_flash.lst) TABS(2) OBJECT(.\build\hal_flash.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 133 $
+  12           */
+  13          
+  14          /** @file
+  15           * @brief Implementation of hal_flash for nRF24LU1+
+  16           */
+  17          
+  18          #include "nrf24lu1p.h"
+  19          #include "hal_flash.h"
+  20          
+  21          void hal_flash_page_erase(uint8_t pn)
+  22          {
+  23   1          uint8_t ckcon_val;
+  24   1      
+  25   1          //Backup CKCON value and force CKCON to 0x01. nRF24LU1p PAN 011 #2
+  26   1          ckcon_val = CKCON;
+  27   1          CKCON = 0x01;
+  28   1          // Save interrupt enable state and disable interrupts:
+  29   1          F0 = EA;
+  30   1          EA = 0;
+  31   1          // Enable flash write operation:
+  32   1          FCR = 0xAA;
+  33   1          FCR = 0x55;
+  34   1          WEN = 1;
+  35   1          //
+  36   1          // Write the page address to FCR to start the page erase operation. This
+  37   1          // operation is "self timed" when executing from the flash; the CPU will
+  38   1          // halt until the operation is finished:
+  39   1          FCR = pn;
+  40   1          //
+  41   1          // When running from XDATA RAM we need to wait for the operation to finish:
+  42   1          while(RDYN == 1)
+  43   1              ;
+  44   1          WEN = 0;
+  45   1          EA = F0; // Restore interrupt enable state
+  46   1          CKCON = ckcon_val; //Restore CKCON state
+  47   1      }
+  48          
+  49          void hal_flash_byte_write(uint16_t a, uint8_t b)
+  50          {
+  51   1          uint8_t xdata * pb;
+  52   1          uint8_t ckcon_val;
+  53   1      
+C51 COMPILER V9.55   HAL_FLASH                                                             10/17/2016 12:49:44 PAGE 2   
+
+  54   1          //Backup CKCON value and force CKCON to 0x01. nRF24LU1p PAN 011 #2
+  55   1          ckcon_val = CKCON;
+  56   1          CKCON = 0x01;
+  57   1          // Save interrupt enable state and disable interrupts:
+  58   1          F0 = EA;
+  59   1          EA = 0;
+  60   1          // Enable flash write operation:
+  61   1          FCR = 0xAA;
+  62   1          FCR = 0x55;
+  63   1          WEN = 1;
+  64   1          //
+  65   1          // Write the byte directly to the flash. This operation is "self timed" when
+  66   1          // executing from the flash; the CPU will halt until the operation is
+  67   1          // finished:
+  68   1          pb = (uint8_t xdata *)a;
+  69   1          *pb = b;
+  70   1          //
+  71   1          // When running from XDATA RAM we need to wait for the operation to finish:
+  72   1          while(RDYN == 1)
+  73   1              ;
+  74   1          WEN = 0;
+  75   1          EA = F0; // Restore interrupt enable state
+  76   1          CKCON = ckcon_val; //Restore CKCON state
+  77   1      }
+  78          
+  79          void hal_flash_bytes_write(uint16_t a, const uint8_t *p, uint16_t n)
+  80          {
+  81   1          uint8_t xdata * pb;
+  82   1          uint8_t ckcon_val;
+  83   1      
+  84   1          //Backup CKCON value and force CKCON to 0x01. nRF24LU1p PAN 011 #2
+  85   1          ckcon_val = CKCON;
+  86   1          CKCON = 0x01;
+  87   1          // Save interrupt enable state and disable interrupts:
+  88   1          F0 = EA;
+  89   1          EA = 0;
+  90   1          // Enable flash write operation:
+  91   1          FCR = 0xAA;
+  92   1          FCR = 0x55;
+  93   1          WEN = 1;
+  94   1          //
+  95   1          // Write the bytes directly to the flash. This operation is
+  96   1          // "self timed"; the CPU will halt until the operation is
+  97   1          // finished:
+  98   1          pb = (uint8_t xdata *)a;
+  99   1          while(n--)
+ 100   1          {
+ 101   2              //lint --e{613} Suppress possible use of null pointer warning:
+ 102   2              *pb++ = *p++;
+ 103   2              //
+ 104   2              // When running from XDATA RAM we need to wait for the operation to
+ 105   2              // finish:
+ 106   2              while(RDYN == 1) {}
+ 107   2          }
+ 108   1          WEN = 0;
+ 109   1          EA = F0; // Restore interrupt enable state
+ 110   1          CKCON = ckcon_val; //Restore CKCON state
+ 111   1      }
+ 112          
+ 113          uint8_t hal_flash_byte_read(uint16_t a)
+ 114          {
+ 115   1          //lint --e{613} Suppress possible use of null pointer warning:
+C51 COMPILER V9.55   HAL_FLASH                                                             10/17/2016 12:49:44 PAGE 3   
+
+ 116   1          uint8_t xdata *pb = (uint8_t xdata *)a;
+ 117   1          return *pb;
+ 118   1      }
+ 119          
+ 120          void hal_flash_bytes_read(uint16_t a, uint8_t *p, uint16_t n)
+ 121          {  
+ 122   1          uint8_t xdata *pb = (uint8_t xdata *)a;
+ 123   1          while(n--)
+ 124   1          {
+ 125   2              //lint --e{613} Suppress possible use of null pointer warning:
+ 126   2              *p = *pb;
+ 127   2              pb++;
+ 128   2              p++;
+ 129   2          }
+ 130   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    246    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----      17
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,538 @@
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\build\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c LARGE OBJECTADVANCED OPTIMIZE(8,SPEED) REGFILE(.\build\usb_hid_rf
+                    -.ORC) BROWSE NOINTPROMOTE INCDIR(..\..\hal;..\..\hal\nrf24l01p;..\..\hal\nrf24lu1p;..\..\compiler\c51;..\..\compiler\com
+                    -mon;..\common) PRINT(.\list\main.lst) TABS(2) OBJECT(.\build\main.obj)
+
+line level    source
+
+   1          /****************************************Copyright (c)****************************************************
+   2          **                    
+   3          **                 
+   4          **
+   5          **--------------File Info---------------------------------------------------------------------------------
+   6          ** File name:      main.c
+   7          ** Last modified  Date:      
+   8          ** Last Version:  1.0
+   9          ** Descriptions:    
+  10          **            
+  11          **--------------------------------------------------------------------------------------------------------
+  12          ** Created by:      FiYu
+  13          ** Created date:    2014-8-5
+  14          ** Version:        1.0
+  15          ** Descriptions:    USB HID ÎÞÏßÊÕ·¢Êý¾ÝÊµÑé³ÌÐò£
+  16          **          Í¨¹ýUSB HIDÅäÖÃnRF24LU1PµÄÎÞÏß²ÎÊý:ÎÞÏßÐÅµÀºÍ½ÓÊÕÊý¾Ý³¤¶È
+  17          **          ½ÓÊÕ·¢Éä¶ËµÄÎÞÏßÐÅÏ¢£¬Í¨¹ýUSB HIDÉÏ´«
+  18          **          Í¨¹ýUSB HID½«ÐÅÏ¢·¢ËÍ¸ønRF24LU1P
+  19          **          
+  20          **--------------------------------------------------------------------------------------------------------
+  21          ** Modified by:      EnixYu
+  22          ** Modified date:    2016-09-24
+  23          ** Version:          1.1
+  24          ** Descriptions:    Ôö¼Ó3Â·¶æ»ú½Ç¶ÈÀ©Õ¹£¬ÐÞ¸Ä·¢ËÍ°üÐ£ÑéºÍ¼ÆËã¡£
+  25          **
+  26          ** Rechecked by:      
+  27          **********************************************************************************************************
+             -/
+  28          #include "nrf24lu1p.h"
+  29          #include <stdint.h>
+  30          #include <stdbool.h>
+  31          #include <string.h>
+  32          #include "hal_nrf.h"
+  33          #include "hal_usb.h"
+  34          #include "hal_usb_hid.h"
+  35          #include "usb_map.h"
+  36          #include "hal_flash.h"
+  37          #include "hal_delay.h"
+  38          
+  39          
+  40          /*-----------------------------------------------------------------------------
+  41          ** USBÏà¹Ø±äÁ¿¶¨Òå
+  42          -----------------------------------------------------------------------------*/
+  43          static xdata uint8_t usb_in_buf[EP1_2_PACKET_SIZE];
+  44          static xdata uint8_t usb_out_buf[EP1_2_PACKET_SIZE];
+  45          static bool xdata app_usb_out_data_ready = false;                  // ÅÐ¶ÏUSB send Íê³É±êÖ¾
+  46          static bool xdata system_ctrl_state_flag = false;                    // ÅÐ¶ÏÊÇ·ñPC¿ØÖÆÄ£Ê½                
+             -  
+  47          extern code const usb_string_desc_templ_t g_usb_string_desc;
+  48          static bool xdata app_pending_usb_write = false;
+  49          
+  50          /*-----------------------------------------------------------------------------
+  51          ** RFÏà¹Ø±äÁ¿¶¨Òå
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 2   
+
+  52          -----------------------------------------------------------------------------*/
+  53          #define NRF_DATA_LEN  32
+  54          static uint8_t xdata rf_rx_buf[NRF_DATA_LEN];
+  55          static uint8_t xdata rf_tx_buf[NRF_DATA_LEN];
+  56          static bool xdata nrf_rx_packet_received = false;                      //NRF RXÊÇ·ñÍê³É±êÖ¾Î»
+  57          static bool xdata radio_busy = false;
+  58          static bool xdata transmitted = false;
+  59          
+  60          const uint8_t TX_RX_ADDRESS[5] = {0x34,0x43,0x10,0x10,0x01};             // TX/RXµØÖ· 5×Ö½Ú
+  61          
+  62          
+  63          //-----------------------------------------------------------------------------
+  64          // Internal function prototypes
+  65          //-----------------------------------------------------------------------------
+  66          static void usb_send_to_pc(uint8_t * buf, uint8_t size);                  // data to PC
+  67          static void nrf_usb_out_packet();                             //USB data to NRF
+  68          static void nrf_usb_in_packet();                                //NRF data to USB
+  69          static void app_wait_while_usb_pending();
+  70          static void rf_config(void);
+  71          static void nrf_usb_out_packet();
+  72          static void nrf_usb_in_packet();
+  73          void nrf_tx_mode(void);
+  74          void nrf_rx_mode(void);
+  75          uint8_t hal_nrf_write_reg(uint8_t reg, uint8_t value);
+  76          void hal_nrf_write_multibyte_reg(uint8_t reg, const uint8_t *pbuf, uint8_t length);\
+  77          uint8_t hal_nrf_read_reg(uint8_t reg);
+  78          uint16_t hal_nrf_read_multibyte_reg(uint8_t reg, uint8_t *pbuf);
+  79          static void nrf_tx_pack_send(void);
+  80          bool NRF_Check(void);
+  81          
+  82          /*-----------------------------------------------------------------------------
+  83          ** USB»Øµ÷º¯ÊýÉùÃ÷
+  84          -----------------------------------------------------------------------------*/
+  85          hal_usb_dev_req_resp_t device_req_cb(hal_usb_device_req* req, uint8_t** data_ptr, uint8_t* size) large ree
+             -ntrant;
+  86          void suspend_cb(uint8_t allow_remote_wu) large reentrant;
+  87          void resume_cb() large reentrant;
+  88          void reset_cb() large reentrant;
+  89          uint8_t ep_1_in_cb(uint8_t *adr_ptr, uint8_t* size) large reentrant;
+  90          uint8_t ep_2_out_cb(uint8_t *adr_ptr, uint8_t* size) large reentrant;
+  91          
+  92          /*******************************************************************************************************
+  93           * Ãè  Êö : MAINº¯Êý
+  94           * Èë  ²Î : none
+  95           * ·µ»ØÖµ : none
+  96           *******************************************************************************************************/
+  97          void main()
+  98          {
+  99   1          P0DIR = 0xEF;                                                   // ÅäÖÃP0:P04ÅäÖÃÎªÊä³ö
+ 100   1          LED = 1;                                                        // Ï¨ÃðÖ¸Ê¾µÆ
+ 101   1      
+ 102   1      //*************************USB HAL initialization************************//
+ 103   1          hal_usb_init(true, device_req_cb, reset_cb, resume_cb, suspend_cb);   
+ 104   1          hal_usb_endpoint_config(0x81, EP1_2_PACKET_SIZE, ep_1_in_cb);      // Configure 32 bytes IN endpoint 1
+             - 
+ 105   1          hal_usb_endpoint_config(0x02, EP1_2_PACKET_SIZE, ep_2_out_cb);     // Configure 32 bytes OUT endpoint 
+             -2
+ 106   1      
+ 107   1          rf_config();                                                    // RF initial
+ 108   1      
+ 109   1          while(true)                                                     // ³õÊ¼»¯Î´NRF RXÄ£Ê½£¬Ò»Ö±ÔÚNRF RXÄ£Ê
+             -½ÏÂ¹¤×÷£¬Óöµ½USB ½ÓÊÕµ½¶æ»ú¿ØÖÆÖ¸Áîºó£¬´¥·¢Ò»´ÎNRF TX                              
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 3   
+
+ 110   1          {  
+ 111   2              if(hal_usb_get_state() == CONFIGURED)                       // check USB initial
+ 112   2              { 
+ 113   3                  if(app_usb_out_data_ready == true)                      // USB ½ÓÊÕµ½Ö÷»ú·¢ËÍµÄÊý¾ÝÕýÈ·±êÖ¾
+ 114   3                  {          
+ 115   4                      app_usb_out_data_ready = false;                     // Claer USB ½ÓÊÕ³É¹¦±êÖ¾
+ 116   4                  }
+ 117   3              }
+ 118   2      
+ 119   2              if(nrf_rx_packet_received == true)                          // RF½ÓÊÕÊý¾ÝÍê³É RX»º´æ
+ 120   2              {          
+ 121   3                  usb_send_to_pc(usb_in_buf,EP1_2_PACKET_SIZE);           // USB data TO PC      
+ 122   3                  nrf_rx_packet_received = false;                         // clear RF RX success flag
+ 123   3                  LED = ~LED;                                             // RF RX data to USB out buffer and US
+             -B data send to PC success, flash
+ 124   3              }
+ 125   2              nrf_tx_pack_send();
+ 126   2              delay_ms(100);
+ 127   2          }  
+ 128   1      }
+ 129          
+ 130          //-----------------------------------------------------------------------------
+ 131          //  NRF send  data ¼æÈÝÒ£¿Ø°åÖ÷¶¯·¢ËÍÒ¡¸ËÊý¾Ý³ÌÐò£¬Î´½âËø£¬spider»á×Ô¶¯ÆÁ±Î´ËÊý¾Ý£¬ÏµÍ³×´Ì¬ÅÐ¶Ï£¬Ñ¡Ôñ·¢ËÍÊ
+             -ý¾Ý°ü
+ 132          //-----------------------------------------------------------------------------
+ 133          static void nrf_tx_pack_send(void)
+ 134          {
+ 135   1          uint8_t cnt,sum;
+ 136   1      
+ 137   1          if(system_ctrl_state_flag == false)                                     // ÅÐ¶ÏÊÇ·ñ PC¿ØÖÆÃüÃûÄ£Ê½£¬·ñ
+             -Ôò·¢ËÍ¹Ì¶¨Ò¡¸ËÊý¾Ý£¬ÊÇ·¢ËÍ¶æ»ú¿ØÖÆÊý¾Ý
+ 138   1          {
+ 139   2              rf_tx_buf[0] = 0xAB;
+ 140   2              rf_tx_buf[1] = 0x32;                                                // ×óÓÒÒ¡¸ËX/YÖá50%Êý¾Ý
+ 141   2              rf_tx_buf[2] = 0x32;
+ 142   2              rf_tx_buf[3] = 0x32;
+ 143   2              rf_tx_buf[4] = 0x32;
+ 144   2      //************** nop data ***************//
+ 145   2              for(cnt=5; cnt<NRF_DATA_LEN; cnt ++)                                // Î´¶¨ÒåÊý¾ÝÇåÁã´¦Àí     
+ 146   2              {
+ 147   3                rf_tx_buf[cnt]= 0;
+ 148   3              }
+ 149   2      //***************check sum**************//        
+ 150   2              sum = 0;
+ 151   2              for(cnt=0; cnt < NRF_DATA_LEN - 1; cnt ++)                          // calculate nrf rx buffer cke
+             -ck sum
+ 152   2              {
+ 153   3                sum += rf_tx_buf[cnt];
+ 154   3              }
+ 155   2              sum = sum ^ 0xFF;
+ 156   2              rf_tx_buf[NRF_DATA_LEN - 1] = sum;
+ 157   2          }
+ 158   1      
+ 159   1          nrf_tx_mode();                                                          // ÉèÖÃ¹¤×÷Ä£Ê½£ºTX  
+ 160   1          hal_nrf_flush_tx();                                                     // RF TX FIFO clear
+ 161   1          delay_ms(1);                     
+ 162   1          CE_LOW();
+ 163   1          hal_nrf_write_multibyte_reg(W_TX_PAYLOAD,rf_tx_buf,RX_PAYLOAD_LEN);    //Ð´Êý¾Ýµ½TX BUF  32¸ö×Ö½Ú
+ 164   1          CE_HIGH();
+ 165   1      }
+ 166          
+ 167          //-----------------------------------------------------------------------------
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 4   
+
+ 168          // Handle commands from Host application ½ÓÊÕUSBÊý¾Ýºó2.4G·¢ËÍ  ¶æ»ú½Ç¶È¿ØÖÆÊý¾Ý
+ 169          //-----------------------------------------------------------------------------
+ 170          static void nrf_usb_out_packet(void)
+ 171          {
+ 172   1        uint8_t sum,cnt;
+ 173   1      
+ 174   1      //************** ckeck Í·Âë ****************************//
+ 175   1        if((!(usb_out_buf[0] == 0xFA))  || (! (usb_out_buf[1] == 0xFB)))  // USB ·¢ËÍÊý¾ÝÍ·Âë 0xFA 0xFB
+ 176   1          {return;}
+ 177   1      //************** ckeck sum ****************************//
+ 178   1        sum = 0;
+ 179   1        for(cnt=0; cnt < 25; cnt ++)                              // calculate nrf rx buffer ckeck sum
+ 180   1        {
+ 181   2          sum += usb_out_buf[cnt];
+ 182   2        }
+ 183   1        sum = sum ^ 0xFF;
+ 184   1        if(!(sum == usb_out_buf[25]))                             //  when the sum check wrong, return ,keep the
+             - nrf tx buffer data do not change 
+ 185   1        {
+ 186   2          return;
+ 187   2        }
+ 188   1      //*************system ctrl state check*******************//
+ 189   1        if(usb_out_buf[2] == 0xAA)                                // ÅÐ¶ÏÊÇ·ñPC¿ØÖÆÃüÃûÄ£Ê½£¬ÃüÁî×ÖÎª0xAA
+ 190   1        {
+ 191   2          system_ctrl_state_flag = true;
+ 192   2        }          
+ 193   1        else
+ 194   1        {
+ 195   2          system_ctrl_state_flag = false;
+ 196   2        }
+ 197   1      //*****************RF TX pack************************//    // USB out data to nrf tx buffer
+ 198   1        sum = 0;
+ 199   1        for(cnt=2; cnt < EP1_2_PACKET_SIZE + 1; cnt++ )          //ÆÁ±ÎÍ·ÂëºÍÐ£ÑéÂë£¬Çócheck sum USB out data by
+             -te2 to EP1_2_PACKET_SIZE - 1
+ 200   1        {
+ 201   2          rf_tx_buf[cnt-2] = usb_out_buf[cnt];        
+ 202   2          sum += rf_tx_buf[cnt-2];
+ 203   2        }      
+ 204   1        sum = sum ^ 0xFF;
+ 205   1        rf_tx_buf[NRF_DATA_LEN - 1] = sum;
+ 206   1      
+ 207   1        app_usb_out_data_ready = true;                            // USB send data is right flag
+ 208   1      }
+ 209          
+ 210          //-----------------------------------------------------------------------------
+ 211          //·¢ËÍ2.4Êý¾Ýµ½USB  µç³ØµçÑ¹AD µçÁ÷ADµÈ
+ 212          //-----------------------------------------------------------------------------
+ 213          static void nrf_usb_in_packet(void)
+ 214          {
+ 215   1        uint8_t sum,cnt;
+ 216   1      
+ 217   1      //************** ckeck sum ***************//
+ 218   1        sum = 0;
+ 219   1        for(cnt = 0;cnt < NRF_DATA_LEN - 1;cnt++)             // calculate nrf rx buffer check sum
+ 220   1        {
+ 221   2          sum += rf_rx_buf[cnt];
+ 222   2        }
+ 223   1        sum = sum ^ 0xFF;
+ 224   1        if(!(sum == rf_rx_buf[NRF_DATA_LEN - 1]))             //  ckeck sum check
+ 225   1        {
+ 226   2          return;
+ 227   2        }    
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 5   
+
+ 228   1      //**************************************//
+ 229   1      
+ 230   1        if(*(rf_rx_buf) == 0xAC)                              // NRF RXÍ·ÂëÊÇ·ñÎª0xAC,·ñ£¬²»´¦ÀíÍË³ö            
+ 231   1        {
+ 232   2          usb_in_buf[0] = 0xFA;
+ 233   2          usb_in_buf[1] = 0xFB;
+ 234   2          usb_in_buf[2] = 0xAC;
+ 235   2      
+ 236   2      //********************* DATA Handle *******************//
+ 237   2          usb_in_buf[3]   = rf_rx_buf[1];                     //Bat_slave_high_val  ,slave battery AD VOL high b
+             -yte value
+ 238   2          usb_in_buf[4]   = rf_rx_buf[2];                     //Bat_slave_low_val  ,slave battery AD VOL low byt
+             -e value
+ 239   2          usb_in_buf[5]   = rf_rx_buf[3];                     //Bat_slave_high_cur  ,slave battery AD VOL high b
+             -yte value
+ 240   2          usb_in_buf[6]   = rf_rx_buf[4];                     //Bat_slave_low_cur  ,slave battery AD VOL low byt
+             -e value
+ 241   2          for(cnt=7; cnt < EP1_2_PACKET_SIZE; cnt++ )         // claer unused bytes
+ 242   2          {
+ 243   3            usb_in_buf[cnt] = 0;
+ 244   3          }
+ 245   2      
+ 246   2      //*********************CHECK SUM*********************//
+ 247   2          sum = 0;
+ 248   2          for(cnt=0; cnt<EP1_2_PACKET_SIZE - 1; cnt++)        // calculate data check sum byte0 to EP1_2_PACKET_
+             -SIZE - 1
+ 249   2          {
+ 250   3            sum += usb_in_buf[cnt];
+ 251   3          }
+ 252   2          sum = sum ^ 0xFF;
+ 253   2          usb_in_buf[EP1_2_PACKET_SIZE - 1] = sum;            // EP1_2_PACKET_SIZE - 1 byte is check sum byte
+ 254   2        }
+ 255   1      }
+ 256          
+ 257          
+ 258          //-----------------------------------------------------------------------------
+ 259          // RF set TX mode
+ 260          //-----------------------------------------------------------------------------
+ 261          void nrf_tx_mode(void)
+ 262          {                               
+ 263   1          CE_LOW();
+ 264   1        
+ 265   1          hal_nrf_write_multibyte_reg(W_REGISTER + TX_ADDR,(uint8_t*)TX_RX_ADDRESS,5);        //Ð´TX½ÚµãµØÖ· 
+ 266   1          hal_nrf_write_multibyte_reg(W_REGISTER + RX_ADDR_P0,(uint8_t*)TX_RX_ADDRESS,5);     //ÉèÖÃTX½ÚµãµØÖ·,Ö
+             -÷ÒªÎªÁËÊ¹ÄÜACK    
+ 267   1          hal_nrf_write_reg(EN_AA,0x01);                                                      //Ê¹ÄÜÍ¨µÀ0µÄ×Ô¶¯Ó
+             -¦´ð  
+ 268   1          hal_nrf_write_reg(EN_RXADDR,0x01);                                                  //Ê¹ÄÜÍ¨µÀ0µÄ½ÓÊÕµ
+             -ØÖ·  
+ 269   1          hal_nrf_write_reg(SETUP_RETR,0x1a);                                                 //ÉèÖÃ×Ô¶¯ÖØ·¢¼ä¸ô
+             -Ê±¼ä:500us + 86us;×î´ó×Ô¶¯ÖØ·¢´ÎÊý:10´Î
+ 270   1          hal_nrf_write_reg(RF_CH,RF_CHANNEL);                                                //ÉèÖÃRFÍ¨µÀÎª40
+ 271   1          hal_nrf_write_reg(RF_SETUP,0x0f);                                                   //ÉèÖÃTX·¢Éä²ÎÊý,0
+             -dbÔöÒæ,2Mbps,µÍÔëÉùÔöÒæ¿ªÆô   
+ 272   1          hal_nrf_write_reg(CONFIG,0x0e);                                                     //ÅäÖÃ»ù±¾¹¤×÷Ä£Ê½
+             -µÄ²ÎÊý;PWR_UP,EN_CRC,16BIT_CRC,½ÓÊÕÄ£Ê½,¿ªÆôËùÓÐÖÐ¶Ï
+ 273   1          
+ 274   1          CE_HIGH();
+ 275   1      }
+ 276          
+ 277          
+ 278          //-----------------------------------------------------------------------------
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 6   
+
+ 279          // RF set RX mode
+ 280          //-----------------------------------------------------------------------------
+ 281          void nrf_rx_mode(void)
+ 282          {  
+ 283   1          CE_LOW();
+ 284   1      
+ 285   1          hal_nrf_write_multibyte_reg(W_REGISTER + RX_ADDR_P0,(uint8_t*)TX_RX_ADDRESS,5);     //Ð´RX½ÚµãµØÖ·  
+ 286   1          hal_nrf_write_reg(EN_AA,0x01);                                                      //Ê¹ÄÜÍ¨µÀ0µÄ×Ô¶¯Ó
+             -¦´ð  
+ 287   1          hal_nrf_write_reg(EN_RXADDR,0x01);                                                  //Ê¹ÄÜÍ¨µÀ0µÄ½ÓÊÕµ
+             -ØÖ·     
+ 288   1          hal_nrf_write_reg(RF_CH,RF_CHANNEL);                                                //ÉèÖÃRFÍ¨ÐÅÆµÂÊ  
+             -    
+ 289   1          hal_nrf_write_reg(RX_PW_P0,RX_PAYLOAD_LEN);                                         //Ñ¡ÔñÍ¨µÀ0µÄÓÐÐ§Ê
+             -ý¾Ý¿í¶È     
+ 290   1          hal_nrf_write_reg(RF_SETUP,0x0f);                                                   //ÉèÖÃTX·¢Éä²ÎÊý,0
+             -dbÔöÒæ,2Mbps,µÍÔëÉùÔöÒæ¿ªÆô   
+ 291   1          hal_nrf_write_reg(CONFIG, 0x0f);                                                    //ÅäÖÃ»ù±¾¹¤×÷Ä£Ê½
+             -µÄ²ÎÊý;PWR_UP,EN_CRC,16BIT_CRC,½ÓÊÕÄ£Ê½ 
+ 292   1          
+ 293   1          CE_HIGH();
+ 294   1      }
+ 295          
+ 296          //-----------------------------------------------------------------------------
+ 297          // RF helper functions
+ 298          //-----------------------------------------------------------------------------
+ 299          
+ 300          // Initialize radio module
+ 301          static void rf_config(void)
+ 302          {
+ 303   1          // Enable radio SPI and clock
+ 304   1          RFCTL = 0x10;                           // ÄÚ²¿SPI·½Ê½ÅäÖÃ
+ 305   1          RFCKEN = 1;                             // RF CLK enable
+ 306   1         
+ 307   1          if(!NRF_Check())                        // check RF communicate is OK
+ 308   1          {
+ 309   2              LED = 0;
+ 310   2          }
+ 311   1          nrf_tx_mode();                          // TX mode set
+ 312   1        
+ 313   1          RF = 1;                                 // ¿ªNRFÖÐ¶Ï
+ 314   1          EA = 1;                                 // ¿ªNRFÖÐ¶Ï
+ 315   1      }
+ 316          
+ 317          //-----------------------------------------------------------------------------
+ 318          // RF funtion check
+ 319          // return 0:sucess
+ 320          // return 1:not success
+ 321          //-----------------------------------------------------------------------------
+ 322          bool NRF_Check(void)
+ 323          {
+ 324   1        uint8_t buf[5]={0XA5,0XA5,0XA5,0XA5,0XA5};
+ 325   1        uint8_t i;    
+ 326   1        hal_nrf_write_multibyte_reg(W_REGISTER + RX_ADDR_P0+HAL_NRF_TX,buf,5);        //Ð´Èë5¸ö×Ö½ÚµÄµØÖ·.  
+ 327   1        hal_nrf_read_multibyte_reg(HAL_NRF_TX,buf);                                   //¶Á³öÐ´ÈëµÄµØÖ·  
+ 328   1        for(i=0;i<5;i++)if(buf[i]!=0XA5)break;                    
+ 329   1        if(i!=5)return 1;                                                             //¼ì²â24L01´íÎó  
+ 330   1        return 0;                                                                     //¼ì²âµ½24L01
+ 331   1      }
+ 332          
+ 333          
+ 334          // Interrupt handler for RF module
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 7   
+
+ 335          /*******************************************************************************************************
+ 336           * Ãè  Êö : RFÖÐ¶Ï·þÎñº¯Êý
+ 337           * Èë  ²Î : none
+ 338           * ·µ»ØÖµ : none
+ 339           *******************************************************************************************************/
+ 340          NRF_ISR()
+ 341          {
+ 342   1        uint8_t irq_flags;
+ 343   1      
+ 344   1        irq_flags = hal_nrf_read_reg(STATUS);        // get RF IRQ flag
+ 345   1         
+ 346   1        if(irq_flags & RX_OK)                        // RX data occured
+ 347   1        {
+ 348   2          hal_nrf_read_multibyte_reg(HAL_NRF_RX_PLOAD,rf_rx_buf);    // RF RX data
+ 349   2          hal_nrf_flush_rx();                        // clear RX FIFO
+ 350   2          nrf_usb_in_packet();                       // RF RX data to USB in data
+ 351   2          nrf_rx_packet_received = true;             //NRF RX data handle is done flag
+ 352   2      //****************************debug********************************//
+ 353   2          //LED = ~LED;
+ 354   2      //*****************************************************************//
+ 355   2        }
+ 356   1            
+ 357   1        else if((irq_flags & MAX_TX) > 0)                 //TX data times was the max  occured
+ 358   1        {
+ 359   2          hal_nrf_flush_tx();                             // clear RF TX FIFO
+ 360   2          nrf_rx_mode();                                  //Change ro RX mode              
+ 361   2        }
+ 362   1            
+ 363   1        else if((irq_flags & TX_OK) > 0)                  //TX data is done(ACK feedback) occured
+ 364   1        {
+ 365   2          hal_nrf_flush_tx();                             //Clear RF TX FIFO buffer 
+ 366   2          nrf_rx_mode();                                  //Change ro RX mode              
+ 367   2        }
+ 368   1            
+ 369   1        hal_nrf_write_reg(STATUS,irq_flags);              //Clear NRF IRQ flag  
+ 370   1      }
+ 371          
+ 372          
+ 373          //-----------------------------------------------------------------------------
+ 374          // USB Helper functions
+ 375          //-----------------------------------------------------------------------------  
+ 376          
+ 377          /*******************************************************************************************************
+ 378           * Ãè  Êö : USBÏòÖ÷»ú·¢ËÍÊý¾Ý
+ 379           * Èë  ²Î : buf£º·¢ËÍ»º´æÊ×µØÖ·
+ 380           *      size£º·¢ËÍÊý¾Ý³¤¶È
+ 381           * ·µ»ØÖµ : none
+ 382           *******************************************************************************************************/ 
+             - 
+ 383          static void usb_send_to_pc(uint8_t * buf, uint8_t size)
+ 384          {
+ 385   1          app_wait_while_usb_pending();
+ 386   1          app_pending_usb_write = true;  
+ 387   1          //memcpy(usb_in_buf, buf, size);
+ 388   1          hal_usb_send_data(1, buf, size);
+ 389   1      }
+ 390          
+ 391          
+ 392          static void app_wait_while_usb_pending()
+ 393          {  
+ 394   1          uint16_t timeout = 50000;                     // Will equal ~ 50-100 ms timeout 
+ 395   1          while(timeout--)
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 8   
+
+ 396   1          {
+ 397   2            if(!app_pending_usb_write)
+ 398   2            {
+ 399   3                break;
+ 400   3            }
+ 401   2          }  
+ 402   1      }
+ 403          
+ 404          //-----------------------------------------------------------------------------
+ 405          // USB Callbacks
+ 406          //-----------------------------------------------------------------------------  
+ 407          
+ 408          hal_usb_dev_req_resp_t device_req_cb(hal_usb_device_req* req, uint8_t** data_ptr, uint8_t* size) large ree
+             -ntrant
+ 409          {
+ 410   1        hal_usb_dev_req_resp_t retval;
+ 411   1      
+ 412   1        if( hal_usb_hid_device_req_proc(req, data_ptr, size, &retval) == true ) 
+ 413   1        {
+ 414   2        // The request was processed with the result stored in the retval variable
+ 415   2        return retval;
+ 416   2        }
+ 417   1        else
+ 418   1        {
+ 419   2        // The request was *not* processed by the HID subsystem
+ 420   2        return STALL;   
+ 421   2        }
+ 422   1      }
+ 423          
+ 424          void suspend_cb(uint8_t allow_remote_wu) large reentrant
+ 425          {
+ 426   1        USBSLP = 1; // Disable USB clock (auto clear)
+ 427   1        allow_remote_wu = 0;  
+ 428   1      }
+ 429          
+ 430          void resume_cb(void) large reentrant
+ 431          {
+ 432   1      }
+ 433          
+ 434          void reset_cb(void) large reentrant
+ 435          {
+ 436   1      }
+ 437          
+ 438          //-----------------------------------------------------------------------------
+ 439          // USB Endpoint Callbacks
+ 440          //-----------------------------------------------------------------------------  
+ 441          uint8_t ep_1_in_cb(uint8_t *adr_ptr, uint8_t* size) large reentrant    //MCU to PC
+ 442          {  
+ 443   1          app_pending_usb_write = false;
+ 444   1          return 0x60;                           // NAK
+ 445   1          adr_ptr = adr_ptr;
+ 446   1          size = size;
+ 447   1      }
+ 448          
+ 449          uint8_t ep_2_out_cb(uint8_t *adr_ptr, uint8_t* size) large reentrant  //PC to MCU ÖÐ¶Ïµ÷ÓÃ
+ 450          {
+ 451   1          memcpy(usb_out_buf, adr_ptr, *size);                // get USB out data to buffer
+ 452   1      //*********************debug********************************//
+ 453   1          //LED =~LED;
+ 454   1      //**********************************************************//
+ 455   1          nrf_usb_out_packet();                               // USB ½ÓÊÕµ½Êý¾Ý£¬Ð£Ñé£¬×é³ÉNRF TX»º´æÖ¡
+ 456   1      
+C51 COMPILER V9.55   MAIN                                                                  10/17/2016 12:49:44 PAGE 9   
+
+ 457   1          return 0xff;                                        // ACK
+ 458   1      }
+ 459          
+ 460          /********************************************END FILE*****************************************************
+             -/
+*** WARNING C294 IN LINE 445 OF main.c: unreachable code
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1325    ----
+   CONSTANT SIZE    =      5    ----
+   XDATA SIZE       =    139      10
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

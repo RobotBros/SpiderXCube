@@ -1,0 +1,64 @@
+#!/bin/sh
+
+echo 'Cleaning...'
+
+rm -rf ./ADC_VoltageSampling/EWARM/ROM
+rm -rf ./ADC_VoltageSampling/EWARM/RAM
+rm -rf ./ADC_VoltageSampling/MDK-ARM/Listings
+rm -rf ./ADC_VoltageSampling/MDK-ARM/Objects
+rm -rf ./EXTI_OverCurrent/EWARM/ROM
+rm -rf ./EXTI_OverCurrent/EWARM/RAM
+rm -rf ./EXTI_OverCurrent/MDK-ARM/Listings
+rm -rf ./EXTI_OverCurrent/MDK-ARM/Objects
+rm -rf ./FLASH_SaveData/EWARM/ROM
+rm -rf ./FLASH_SaveData/EWARM/RAM
+rm -rf ./FLASH_SaveData/MDK-ARM/Listings
+rm -rf ./FLASH_SaveData/MDK-ARM/Objects
+rm -rf ./NRF24L01P_Bootloader/EWARM/ROM
+rm -rf ./NRF24L01P_Bootloader/EWARM/RAM
+rm -rf ./NRF24L01P_Bootloader/MDK-ARM/Listings
+rm -rf ./NRF24L01P_Bootloader/MDK-ARM/Objects
+rm -rf ./NRF24L01P_Host/EWARM/ROM
+rm -rf ./NRF24L01P_Host/EWARM/RAM
+rm -rf ./NRF24L01P_Host/MDK-ARM/Listings
+rm -rf ./NRF24L01P_Host/MDK-ARM/Objects
+rm -rf ./NRF24LU1P_FirmwareBurn/EWARM/ROM
+rm -rf ./NRF24LU1P_FirmwareBurn/EWARM/RAM
+rm -rf ./NRF24LU1P_FirmwareBurn/MDK-ARM/Listings
+rm -rf ./NRF24LU1P_FirmwareBurn/MDK-ARM/Objects
+rm -rf ./SimpleControlBLE/EWARM/ROM
+rm -rf ./SimpleControlBLE/EWARM/RAM
+rm -rf ./SimpleControlBLE/MDK-ARM/Listings
+rm -rf ./SimpleControlBLE/MDK-ARM/Objects
+rm -rf ./SimpleControlNRF/EWARM/ROM
+rm -rf ./SimpleControlNRF/EWARM/RAM
+rm -rf ./SimpleControlNRF/MDK-ARM/Listings
+rm -rf ./SimpleControlNRF/MDK-ARM/Objects
+rm -rf ./SPI_NRF24L01/EWARM/ROM
+rm -rf ./SPI_NRF24L01/EWARM/RAM
+rm -rf ./SPI_NRF24L01/MDK-ARM/Listings
+rm -rf ./SPI_NRF24L01/MDK-ARM/Objects
+rm -rf ./TIM_ServoControl/EWARM/ROM
+rm -rf ./TIM_ServoControl/EWARM/RAM
+rm -rf ./TIM_ServoControl/MDK-ARM/Listings
+rm -rf ./TIM_ServoControl/MDK-ARM/Objects
+rm -rf ./USART_DMA_Bluetooth2_0/EWARM/ROM
+rm -rf ./USART_DMA_Bluetooth2_0/EWARM/RAM
+rm -rf ./USART_DMA_Bluetooth2_0/MDK-ARM/Listings
+rm -rf ./USART_DMA_Bluetooth2_0/MDK-ARM/Objects
+rm -rf ./USART_DMA_Bluetooth4_0/EWARM/ROM
+rm -rf ./USART_DMA_Bluetooth4_0/EWARM/RAM
+rm -rf ./USART_DMA_Bluetooth4_0/MDK-ARM/Listings
+rm -rf ./USART_DMA_Bluetooth4_0/MDK-ARM/Objects
+rm -rf ./USART_IT_Bluetooth2_0/EWARM/ROM
+rm -rf ./USART_IT_Bluetooth2_0/EWARM/RAM
+rm -rf ./USART_IT_Bluetooth2_0/MDK-ARM/Listings
+rm -rf ./USART_IT_Bluetooth2_0/MDK-ARM/Objects
+rm -rf ./USART_IT_Bluetooth4_0/EWARM/ROM
+rm -rf ./USART_IT_Bluetooth4_0/EWARM/RAM
+rm -rf ./USART_IT_Bluetooth4_0/MDK-ARM/Listings
+rm -rf ./USART_IT_Bluetooth4_0/MDK-ARM/Objects
+rm -rf ./Joystick-ROM/EWARM/ROM
+rm -rf ./Joystick-ROM/EWARM/RAM
+
+echo 'Clean done.'

@@ -1,0 +1,19 @@
+---- NVIC_InitStructure Matches (18 in 2 files) ----
+Exti.c (hardware\exti):	NVIC_InitTypeDef NVIC_InitStructure;
+Exti.c (hardware\exti):	NVIC_InitStructure.NVIC_IRQChannel = EXTI9_5_IRQn;														//使能NRF24L01 IRQ所在的外部中断通道
+Exti.c (hardware\exti):  	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x01;								//抢占优先级1 
+Exti.c (hardware\exti):  	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x00;												//子优先级0 
+Exti.c (hardware\exti):  	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;															//使能外部中断通道
+Exti.c (hardware\exti):  	NVIC_Init(&NVIC_InitStructure);  	  																				//根据NVIC_InitStruct中指定的参数初始化外设NVIC寄存器
+Timer.c (hardware\timer):	NVIC_InitTypeDef NVIC_InitStructure;
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;  
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;  					//主优先级2
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0; 								//次优先级0
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 								  //IRQ允许中断
+Timer.c (hardware\timer):	NVIC_Init(&NVIC_InitStructure);  		
+Timer.c (hardware\timer):	NVIC_InitTypeDef NVIC_InitStructure;
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;  
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;  				//主优先级0
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0; 								//次优先级0
+Timer.c (hardware\timer):	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; 								  //IRQ允许中断
+Timer.c (hardware\timer):	NVIC_Init(&NVIC_InitStructure);  		

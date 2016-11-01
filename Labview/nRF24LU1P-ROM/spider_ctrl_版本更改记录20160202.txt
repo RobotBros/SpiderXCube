@@ -1,0 +1,10 @@
+V01版本 Date 20151004 fishcan   PCB ctrl_usb_v01 NRF24LUP01
+ 1、默认为RF TX模式，就收到USB out数据后锁死控制模式；RF RX中断处理，USB out中断处理；NRF RX and USB in success LED flash
+
+V1.1 Enix Yu 20160924
+1. 修改发送数据校验和，增加3路舵机角度扩展
+   
+------WebKitFormBoundaryL9ldFzAMptJ46obZ
+Content-Disposition: form-data; name="mode"
+
+formupload

@@ -1,0 +1,102 @@
+C51 COMPILER V9.55   HAL_SPI                                                               10/17/2016 12:49:45 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE HAL_SPI
+OBJECT MODULE PLACED IN .\build\hal_spi.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\hal\nrf24lu1p\hal_spi.c LARGE OBJECTADVANCED OPTIMIZE(8,SPEED) REG
+                    -FILE(.\build\usb_hid_rf.ORC) BROWSE NOINTPROMOTE INCDIR(..\..\hal;..\..\hal\nrf24l01p;..\..\hal\nrf24lu1p;..\..\compiler
+                    -\c51;..\..\compiler\common;..\common) PRINT(.\list\hal_spi.lst) TABS(2) OBJECT(.\build\hal_spi.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 133 $
+  12           */
+  13          
+  14          /** @file
+  15          * @brief  Implementation of the SPI HAL module for nRF24LU1+
+  16           */
+  17          #include "nrf24lu1p.h"
+  18          #include "hal_spi.h"
+  19          
+  20          #define SPI_DATA    0x01
+  21          #define SPI_START   0x02
+  22          #define SPI_STOP    0x04
+  23          
+  24          void hal_spi_master_init(hal_spi_clkdivider_t ck, hal_spi_mode_t mode, hal_spi_byte_order_t bo)
+  25          {
+  26   1        uint8_t smctl;
+  27   1        uint8_t temp = mode;  // mode is not used in nRF24LU1
+  28   1        temp = bo;            // byte_order is not used in nRF24LU1
+  29   1      
+  30   1        I3FR = 1;             // rising edge SPI ready detect
+  31   1        P0EXP = 0x01;         // Map SPI master on P0
+  32   1        INTEXP = 0x02;        // Select SPI master on IEX3
+  33   1        SPIF = 0;             // Clear any pending interrupts
+  34   1        switch(ck)
+  35   1        {
+  36   2          case SPI_CLK_DIV2:
+  37   2            smctl = 0x11;
+  38   2            break;
+  39   2      
+  40   2          case SPI_CLK_DIV4:
+  41   2            smctl = 0x12;
+  42   2            break;
+  43   2      
+  44   2          case SPI_CLK_DIV8:
+  45   2            smctl = 0x13;
+  46   2            break;
+  47   2      
+  48   2          case  SPI_CLK_DIV16:
+  49   2            smctl = 0x14;
+  50   2            break;
+  51   2      
+  52   2          case SPI_CLK_DIV32:
+  53   2            smctl = 0x15;
+C51 COMPILER V9.55   HAL_SPI                                                               10/17/2016 12:49:45 PAGE 2   
+
+  54   2            break;
+  55   2      
+  56   2          case SPI_CLK_DIV64:
+  57   2          default:
+  58   2            smctl = 0x16;
+  59   2            break;
+  60   2        }
+  61   1        SMCTL = smctl;        // Enable SPI master with the specified divide factor
+  62   1      }
+  63          
+  64          uint8_t hal_spi_master_read_write(uint8_t pLoad)
+  65          {
+  66   1        SPIF = 0;             // Clear interrupt request
+  67   1        SMDAT = pLoad;        // Start the SPI operation by writing the data
+  68   1        while(SPIF == 0)      // Wait until SPI has finished transmitting
+  69   1          ;
+  70   1        return SMDAT;         // Return the the read byte
+  71   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     85    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

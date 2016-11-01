@@ -1,0 +1,154 @@
+C51 COMPILER V9.55   HAL_USB_HID                                                           10/17/2016 12:49:45 PAGE 1   
+
+
+C51 COMPILER V9.55, COMPILATION OF MODULE HAL_USB_HID
+OBJECT MODULE PLACED IN .\build\hal_usb_hid.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE ..\..\hal\nrf24lu1p\hal_usb_hid.c LARGE OBJECTADVANCED OPTIMIZE(8,SPEED)
+                    - REGFILE(.\build\usb_hid_rf.ORC) BROWSE NOINTPROMOTE INCDIR(..\..\hal;..\..\hal\nrf24l01p;..\..\hal\nrf24lu1p;..\..\comp
+                    -iler\c51;..\..\compiler\common;..\common) PRINT(.\list\hal_usb_hid.lst) TABS(2) OBJECT(.\build\hal_usb_hid.obj)
+
+line level    source
+
+   1          /* Copyright (c) 2009 Nordic Semiconductor. All Rights Reserved.
+   2           *
+   3           * The information contained herein is confidential property of Nordic 
+   4           * Semiconductor ASA.Terms and conditions of usage are described in detail 
+   5           * in NORDIC SEMICONDUCTOR STANDARD SOFTWARE LICENSE AGREEMENT. 
+   6           *
+   7           * Licensees are granted free, non-transferable use of the information. NO
+   8           * WARRENTY of ANY KIND is provided. This heading must NOT be removed from
+   9           * the file.
+  10           *              
+  11           * $LastChangedRevision: 2409 $
+  12           */
+  13          
+  14          /** @file
+  15           * @brief Function for handling HID device requests
+  16           */
+  17          
+  18          #include "hal_usb_hid.h"
+  19          #include "nrf24lu1p.h"
+  20          #include "nordic_common.h"
+  21          
+  22          static xdata uint8_t tmp_usb_buf[8];
+  23          static uint8_t tmp_usb_hid_protocol;
+  24          
+  25          // More than 3 parameters passed to this function => need to make it reentrant
+  26          bool hal_usb_hid_device_req_proc(hal_usb_device_req* req, uint8_t** data_ptr, uint8_t* size, hal_usb_dev_r
+             -eq_resp_t* resp) large reentrant
+  27          {
+  28   1          bool retval = false;    
+  29   1          *resp = STALL;
+  30   1      
+  31   1          if(req->bRequest == USB_REQ_GET_DESCRIPTOR )
+  32   1          {
+  33   2              switch( req->wValueMsb )
+  34   2              {
+  35   3                  case  USB_CLASS_DESCRIPTOR_REPORT:
+  36   3                      retval = true;
+  37   3                      *data_ptr = g_usb_hid_hids[LSB(req->wIndex)].hid_report_desc;
+  38   3                      *size = MIN(g_usb_hid_hids[LSB(req->wIndex)].hid_report_desc_size, LSB(req->wLength));
+  39   3                      *resp = DATA;
+  40   3                      break;
+  41   3                  case USB_CLASS_DESCRIPTOR_HID:
+  42   3                      retval = true;
+  43   3                      *data_ptr = (uint8_t*)g_usb_hid_hids[LSB(req->wIndex)].hid_desc;
+  44   3                      *size = MIN(sizeof(hal_usb_hid_desc_t), LSB(req->wLength));
+  45   3                      *resp = DATA;
+  46   3                      break;
+  47   3                  default:
+  48   3                      break;
+  49   3              }
+  50   2          } 
+  51   1          else if( ( req->bmRequestType & 0x20 ) == 0x20 ) // This is a class specific request D5..6: Type Class
+             -(value 1)
+C51 COMPILER V9.55   HAL_USB_HID                                                           10/17/2016 12:49:45 PAGE 2   
+
+  52   1          { 
+  53   2              switch( req->bRequest )
+  54   2              {
+  55   3                  case 0x01: // Get_Report
+  56   3                      retval = true;
+  57   3                      // For now we just send an "empty" report. No mousemoves, no mouse-key pressed.
+  58   3                      // TODO: This breaks the generic nature of usb.c. 
+  59   3                      // Have to create some global "default" reports in the template later.
+  60   3                      tmp_usb_buf[0] = tmp_usb_buf[1] = 0x00;
+  61   3                      *data_ptr = &tmp_usb_buf[0];
+  62   3                      *size = 0x03;
+  63   3                      *resp = DATA;
+  64   3                      break;
+  65   3                  case 0x02: // Get_Idle
+  66   3                      retval = true;
+  67   3                      *resp = STALL;
+  68   3                      break;
+  69   3                  case 0x0a: // Set_Idle
+  70   3                      retval = true;
+  71   3                      //idle_value = (req->wValueMsb);
+  72   3                      *resp = DATA;
+  73   3                      break;
+  74   3                  case 0x03: // Get_Protocol
+  75   3                      retval = true;
+  76   3                      tmp_usb_buf[0] = ( tmp_usb_hid_protocol & (1 << LSB(req->wIndex)) ) ? 0x01 : 0x00;
+  77   3                      *data_ptr = &tmp_usb_buf[0];
+  78   3                      *size = 0x01;
+  79   3                      *resp = DATA;
+  80   3                      break;
+  81   3                  case 0x0b: // Set_Protocol
+  82   3                      retval = true;
+  83   3      #if 1 // Right now we do not support setting of protocol in a intelligent way
+  84   3                      if( req->wValueLsb == 0x01 )
+  85   3                      {
+  86   4                          tmp_usb_hid_protocol |= 1 << LSB(req->wIndex);
+  87   4                      }
+  88   3                      else
+  89   3                      {
+  90   4                          tmp_usb_hid_protocol &= ~(1 << LSB(req->wIndex));
+  91   4                      }
+  92   3      
+  93   3                      *resp = EMPTY_RESPONSE;
+  94   3      #else
+                              *resp = EMPTY_RESPONSE;
+              #endif
+  97   3                      break;
+  98   3                  case 0x09: // Set_Report
+  99   3                  {
+ 100   4                      if( req->wValueMsb == 0x03 ) // Feature report
+ 101   4                      {
+ 102   5                          retval = true;
+ 103   5                          *resp = EMPTY_RESPONSE;
+ 104   5                      }
+ 105   4                      else if ( req->wValueMsb == 0x02 ) // Output report
+ 106   4                      {
+ 107   5                          // For now we just assume that the OUT packet is a keyboard report.
+ 108   5                          *resp = EMPTY_RESPONSE;
+ 109   5                          retval = true;
+ 110   5                      }
+ 111   4                  }
+ 112   3                      break;
+ 113   3                  default:
+C51 COMPILER V9.55   HAL_USB_HID                                                           10/17/2016 12:49:45 PAGE 3   
+
+ 114   3                      break;
+ 115   3                  }
+ 116   2          }
+ 117   1      
+ 118   1          return retval;
+ 119   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    910    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =      9    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

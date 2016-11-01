@@ -1,0 +1,8 @@
+---- System_HW_cur_protect_flag Matches (7 in 3 files) ----
+Exti.c (hardware\exti):u8 System_HW_cur_protect_flag;
+Exti.c (hardware\exti):	System_HW_cur_protect_flag =NULL;
+Exti.c (hardware\exti):			System_HW_cur_protect_flag = DONE;
+Sys.c (system\sys):	else if(System_HW_cur_protect_flag == DONE)
+Sys.c (system\sys):			System_HW_cur_protect_flag = NULL;
+Sys.c (system\sys):			System_HW_cur_protect_flag = NULL;
+Sys.h (system\sys):extern u8 System_HW_cur_protect_flag;							//系统电流峰值保护寄存器

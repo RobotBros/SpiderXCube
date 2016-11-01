@@ -1,0 +1,2381 @@
+LX51 LINKER/LOCATER V4.66.62.0                                                          10/17/2016  12:49:45  PAGE 1
+
+
+LX51 LINKER/LOCATER V4.66.62.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\LX51.EXE .\build\STARTUP.obj, .\build\main.obj, .\build\usb_desc.obj, .\build\hal_flash.obj, .\build\
+>> hal_usb.obj, .\build\hal_usb_hid.obj, .\build\hal_nrf_hw.obj, .\build\hal_spi.obj, .\build\hal_nrf.obj, .\build\hal_d
+>> elay.obj TO .\build\usb_hid_rf REGFILE (.\build\usb_hid_rf.ORC) PRINT (.\list\usb_hid_rf.map) REMOVEUNUSED OVERLAY (H
+>> AL_NRF_WRITE_REG ! *) CLASSES (XDATA (X:0X8000-X:0X87FF), HDATA (X:0X8000-X:0X87FF), CODE (C:0X0-C:0X7FFF), CONST (C:
+>> 0X0-C:0X7FFF), ECODE (C:0X0-C:0X7FFF), HCONST (C:0X0-C:0X7FFF))
+
+
+CPU MODE:     8051 MODE
+MEMORY MODEL: LARGE
+
+
+INPUT MODULES INCLUDED:
+  .\build\STARTUP.obj (?C_STARTUP)
+         COMMENT TYPE 0: AX51 V3.13.0.0
+  .\build\main.obj (MAIN)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\usb_desc.obj (USB_DESC)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_flash.obj (HAL_FLASH)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_usb.obj (HAL_USB)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_usb_hid.obj (HAL_USB_HID)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_nrf_hw.obj (HAL_NRF_HW)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_spi.obj (HAL_SPI)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_nrf.obj (HAL_NRF)
+         COMMENT TYPE 0: C51 V9.55
+  .\build\hal_delay.obj (HAL_DELAY)
+         COMMENT TYPE 0: C51 V9.55
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C_INIT)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?COPY)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?CLDPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?CLDOPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?CSTPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?IILDX)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?ILDIX)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PSTPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDOPTR)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?CCASE)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?ICALL)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C_XBP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C_IBP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C_PBP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?ADDXBP)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?XBPOFF)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDIDATA)
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 2
+
+
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PSTIDATA)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDXDATA)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PSTXDATA)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDPDATA)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PSTPDATA)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+  C:\KEIL_V5\C51\LIB\C51L.LIB (?C?PLDCODE)
+         COMMENT TYPE 1: A51 / ASM51 Assembler
+
+
+ACTIVE MEMORY CLASSES OF MODULE:  .\build\usb_hid_rf (?C_STARTUP)
+
+BASE        START       END         USED      MEMORY CLASS
+==========================================================
+X:000000H   X:008000H   X:0087FFH   0002CCH   XDATA
+X:000000H   X:008000H   X:0087FFH             HDATA
+C:000000H   C:000000H   C:007FFFH   001976H   CODE
+C:000000H   C:000000H   C:007FFFH   0000D7H   CONST
+C:000000H   C:000000H   C:007FFFH             ECODE
+B00:0000H   C:000000H   C:007FFFH             HCONST
+I:000000H   I:000000H   I:0000FFH   000001H   IDATA
+I:000000H   I:000000H   I:00007FH   00000CH   DATA
+
+
+MEMORY MAP OF MODULE:  .\build\usb_hid_rf (?C_STARTUP)
+
+
+START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
+=========================================================================
+
+* * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
+000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
+000008H   00000BH   000004H   BYTE   UNIT     DATA           ?C?LIB_DATA
+00000CH   00000CH   000001H   BYTE   UNIT     IDATA          ?STACK
+
+* * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
+000000H   000002H   000003H   ---    OFFS..   CODE           ?CO?STARTUP?3
+000003H   000023H   000021H   BYTE   UNIT     CODE           ?C_INITSEG
+000024H   000028H   000005H   BYTE   UNIT     CONST          ?CO?MAIN
+000029H   00003EH   000016H   BYTE   UNIT     CODE           ?PR?_DELAY_MS?HAL_DELAY
+00003FH   000047H   000009H   BYTE   UNIT     CODE           ?PR?HAL_NRF_FLUSH_TX?HAL_NRF
+000048H   000048H   000001H   BYTE   UNIT     CODE           ?PR?_?RESUME_CB?MAIN
+000049H   000049H   000001H   BYTE   UNIT     CODE           ?PR?_?RESET_CB?MAIN
+00004AH   00004AH   000001H   ---    ---      **GAP**
+00004BH   00004DH   000003H   BYTE   OFFS..   CODE           ?MAIN?0004B
+00004EH   000057H   00000AH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_RW?HAL_NRF_HW
+000058H   00005AH   000003H   ---    ---      **GAP**
+00005BH   00005DH   000003H   BYTE   OFFS..   CODE           ?HAL_USB?0005B
+00005EH   000062H   000005H   BYTE   UNIT     CODE           ?PR?HAL_NRF_READ_RX_PAYLOAD_WIDTH?HAL_NRF
+000063H   000065H   000003H   BYTE   OFFS..   CODE           ?HAL_USB?00063
+000066H   0002FDH   000298H   BYTE   UNIT     CODE           ?C?LIB_CODE
+0002FEH   000395H   000098H   BYTE   UNIT     CODE           ?C_C51STARTUP
+000396H   000467H   0000D2H   BYTE   UNIT     CONST          ?CO?USB_DESC
+000468H   0004E9H   000082H   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
+0004EAH   00053EH   000055H   BYTE   UNIT     CODE           ?PR?NRF_TX_PACK_SEND?MAIN
+00053FH   000557H   000019H   BYTE   UNIT     CODE           ?PR?_DELAY_US?HAL_DELAY
+000558H   00057DH   000026H   BYTE   UNIT     CODE           ?PR?NRF_TX_MODE?MAIN
+00057EH   0005B5H   000038H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_WRITE_REG?HAL_NRF
+0005B6H   0005D2H   00001DH   BYTE   UNIT     CODE           ?PR?NRF_RX_MODE?MAIN
+0005D3H   0006DFH   00010DH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_WRITE_MULTIBYTE_REG?HAL_NRF
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 3
+
+
+0006E0H   0006F2H   000013H   BYTE   UNIT     CODE           ?PR?RF_CONFIG?MAIN
+0006F3H   000736H   000044H   BYTE   UNIT     CODE           ?PR?NRF_CHECK?MAIN
+000737H   0007C6H   000090H   BYTE   UNIT     CODE           ?PR?NRF_USB_OUT_PACKET?MAIN
+0007C7H   000846H   000080H   BYTE   UNIT     CODE           ?PR?NRF_USB_IN_PACKET?MAIN
+000847H   0008C7H   000081H   BYTE   UNIT     CODE           ?PR?NRF_ISR?MAIN
+0008C8H   0008DFH   000018H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_READ_REG?HAL_NRF
+0008E0H   000AD2H   0001F3H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_READ_MULTIBYTE_REG?HAL_NRF
+000AD3H   000AFBH   000029H   BYTE   UNIT     CODE           ?PR?_USB_SEND_TO_PC?MAIN
+000AFCH   000B8EH   000093H   BYTE   UNIT     CODE           ?PR?_HAL_USB_SEND_DATA?HAL_USB
+000B8FH   000B97H   000009H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_ADDRESS_WIDTH?HAL_NRF
+000B98H   000BA4H   00000DH   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_RX_DATA_SOURCE?HAL_NRF
+000BA5H   000BAEH   00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_FLUSH_RX?HAL_NRF
+000BAFH   000BB8H   00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_NOP?HAL_NRF
+000BB9H   000BCEH   000016H   BYTE   UNIT     CODE           ?PR?APP_WAIT_WHILE_USB_PENDING?MAIN
+000BCFH   000C59H   00008BH   BYTE   UNIT     CODE           ?PR?_?DEVICE_REQ_CB?MAIN
+000C5AH   000FB3H   00035AH   BYTE   UNIT     CODE           ?PR?_?HAL_USB_HID_DEVICE_REQ_PROC?HAL_USB_HID
+000FB4H   000FCCH   000019H   BYTE   UNIT     CODE           ?PR?_?SUSPEND_CB?MAIN
+000FCDH   000FE7H   00001BH   BYTE   UNIT     CODE           ?PR?_?EP_1_IN_CB?MAIN
+000FE8H   00102BH   000044H   BYTE   UNIT     CODE           ?PR?_?EP_2_OUT_CB?MAIN
+00102CH   00114FH   000124H   BYTE   UNIT     CODE           ?PR?_HAL_USB_INIT?HAL_USB
+001150H   001197H   000048H   BYTE   UNIT     CODE           ?PR?_HAL_USB_ENDPOINT_STALL?HAL_USB
+001198H   0012F7H   000160H   BYTE   UNIT     CODE           ?PR?ISR_SUDAV?HAL_USB
+0012F8H   00137DH   000086H   BYTE   UNIT     CODE           ?PR?USB_PROCESS_DEV_REQ_CB_RESPONSE?HAL_USB
+00137EH   00146EH   0000F1H   BYTE   UNIT     CODE           ?PR?USB_PROCESS_GET_DESCRIPTOR?HAL_USB
+00146FH   001492H   000024H   BYTE   UNIT     CODE           ?PR?_PACKETIZE?HAL_USB
+001493H   00151CH   00008AH   BYTE   UNIT     CODE           ?PR?PACKETIZER_ISR_EP0_IN?HAL_USB
+00151DH   001757H   00023BH   BYTE   UNIT     CODE           ?PR?USB_ISR?HAL_USB
+001758H   001783H   00002CH   BYTE   UNIT     CODE           ?PR?ISR_USBRESET?HAL_USB
+001784H   0017B4H   000031H   BYTE   UNIT     CODE           ?PR?_USB_PROCESS_EP_RESPONSE?HAL_USB
+0017B5H   0017F2H   00003EH   BYTE   UNIT     CODE           ?PR?ISR_SUSPEND?HAL_USB
+0017F3H   0018DFH   0000EDH   BYTE   UNIT     CODE           ?PR?_HAL_USB_ENDPOINT_CONFIG?HAL_USB
+0018E0H   0018F0H   000011H   BYTE   UNIT     CODE           ?PR?HAL_USB_GET_STATE?HAL_USB
+0018F1H   0019C6H   0000D6H   BYTE   UNIT     CODE           ?PR?USB_PROCESS_GET_STATUS?HAL_USB
+0019C7H   001A50H   00008AH   BYTE   UNIT     CODE           ?PR?USB_WU_ISR?HAL_USB
+
+* * * * * * * * * * *  X D A T A   M E M O R Y  * * * * * * * * * * * * *
+008000H   00808AH   00008BH   BYTE   UNIT     XDATA          ?XD?MAIN
+00808BH   0080D1H   000047H   BYTE   UNIT     XDATA          ?XD?HAL_USB
+0080D2H   0080FBH   00002AH   BYTE   UNIT     XDATA          _XDATA_GROUP_
+0080FCH   008104H   000009H   BYTE   UNIT     XDATA          ?XD?HAL_USB_HID
+008105H   008105H   000001H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_WRITE_REG?HAL_NRF
+008106H   00C43FH   00433AH   ---    ---      **GAP**
+00C440H   00C45FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?42
+00C460H   00C47FH   000020H   ---    ---      **GAP**
+00C480H   00C49FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?38
+00C4A0H   00C4BFH   000020H   ---    ---      **GAP**
+00C4C0H   00C4DFH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?39
+00C4E0H   00C4FFH   000020H   ---    ---      **GAP**
+00C500H   00C51FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?36
+00C520H   00C53FH   000020H   ---    ---      **GAP**
+00C540H   00C55FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?37
+00C560H   00C57FH   000020H   ---    ---      **GAP**
+00C580H   00C59FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?34
+00C5A0H   00C5BFH   000020H   ---    ---      **GAP**
+00C5C0H   00C5DFH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?35
+00C5E0H   00C5FFH   000020H   ---    ---      **GAP**
+00C600H   00C61FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?32
+00C620H   00C63FH   000020H   ---    ---      **GAP**
+00C640H   00C65FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?33
+00C660H   00C67FH   000020H   ---    ---      **GAP**
+00C680H   00C69FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?30
+00C6A0H   00C6BFH   000020H   ---    ---      **GAP**
+00C6C0H   00C6DFH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?31
+00C6E0H   00C6FFH   000020H   ---    ---      **GAP**
+00C700H   00C71FH   000020H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?29
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 4
+
+
+00C720H   00C75FH   000040H   ---    ---      **GAP**
+00C760H   00C760H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?24
+00C761H   00C767H   000007H   ---    ---      **GAP**
+00C768H   00C768H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?22
+00C769H   00C76FH   000007H   ---    ---      **GAP**
+00C770H   00C770H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?27
+00C771H   00C771H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?28
+00C772H   00C780H   00000FH   ---    ---      **GAP**
+00C781H   00C781H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?9
+00C782H   00C782H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?11
+00C783H   00C783H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?13
+00C784H   00C784H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?14
+00C785H   00C785H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?15
+00C786H   00C787H   000002H   ---    ---      **GAP**
+00C788H   00C788H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?26
+00C789H   00C789H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?5
+00C78AH   00C78AH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?7
+00C78BH   00C78BH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?8
+00C78CH   00C78CH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?10
+00C78DH   00C78DH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?12
+00C78EH   00C79FH   000012H   ---    ---      **GAP**
+00C7A0H   00C7A0H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?17
+00C7A1H   00C7A1H   000001H   ---    ---      **GAP**
+00C7A2H   00C7A2H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?19
+00C7A3H   00C7A7H   000005H   ---    ---      **GAP**
+00C7A8H   00C7A8H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?21
+00C7A9H   00C7A9H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?1
+00C7AAH   00C7AAH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?3
+00C7ABH   00C7ABH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?18
+00C7ACH   00C7ACH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?71
+00C7ADH   00C7ADH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?72
+00C7AEH   00C7AEH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?4
+00C7AFH   00C7AFH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?2
+00C7B0H   00C7B3H   000004H   ---    ---      **GAP**
+00C7B4H   00C7B4H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?56
+00C7B5H   00C7B5H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?41
+00C7B6H   00C7B6H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?57
+00C7B7H   00C7B7H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?43
+00C7B8H   00C7B8H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?58
+00C7B9H   00C7B9H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?46
+00C7BAH   00C7BAH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?60
+00C7BBH   00C7BBH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?48
+00C7BCH   00C7BCH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?62
+00C7BDH   00C7BDH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?50
+00C7BEH   00C7BEH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?64
+00C7BFH   00C7BFH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?53
+00C7C0H   00C7C4H   000005H   ---    ---      **GAP**
+00C7C5H   00C7C5H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?45
+00C7C6H   00C7C6H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?59
+00C7C7H   00C7C7H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?47
+00C7C8H   00C7C8H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?61
+00C7C9H   00C7C9H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?49
+00C7CAH   00C7CAH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?63
+00C7CBH   00C7CBH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?52
+00C7CCH   00C7CCH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?65
+00C7CDH   00C7CDH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?54
+00C7CEH   00C7CEH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?66
+00C7CFH   00C7CFH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?55
+00C7D0H   00C7D5H   000006H   ---    ---      **GAP**
+00C7D6H   00C7D6H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?20
+00C7D7H   00C7D7H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?16
+00C7D8H   00C7D8H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?0
+00C7D9H   00C7D9H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?74
+00C7DAH   00C7DAH   000001H   ---    ---      **GAP**
+00C7DBH   00C7DBH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?69
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 5
+
+
+00C7DCH   00C7DCH   000001H   ---    ---      **GAP**
+00C7DDH   00C7DDH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?73
+00C7DEH   00C7DEH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?40
+00C7DFH   00C7DFH   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?44
+00C7E0H   00C7E0H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?67
+00C7E1H   00C7E1H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?68
+00C7E2H   00C7E2H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?51
+00C7E3H   00C7E3H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?6
+00C7E4H   00C7E7H   000004H   ---    ---      **GAP**
+00C7E8H   00C7EFH   000008H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?70
+00C7F0H   00C7F0H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?25
+00C7F1H   00C7F7H   000007H   ---    ---      **GAP**
+00C7F8H   00C7F8H   000001H   BYTE   OFFS..   XDATA          ?XD?HAL_USB?23
+
+* * * * * * * * *   R E M O V E D     S E G M E N T S   * * * * * * * *
+   *DEL*:           000023H   BYTE   UNIT     CODE           ?PR?_HAL_FLASH_PAGE_ERASE?HAL_FLASH
+   *DEL*:           000027H   BYTE   UNIT     CODE           ?PR?_HAL_FLASH_BYTE_WRITE?HAL_FLASH
+   *DEL*:           00006FH   BYTE   UNIT     CODE           ?PR?_HAL_FLASH_BYTES_WRITE?HAL_FLASH
+   *DEL*:           00000AH   BYTE   UNIT     XDATA          ?XD?_HAL_FLASH_BYTES_WRITE?HAL_FLASH
+   *DEL*:           000007H   BYTE   UNIT     CODE           ?PR?_HAL_FLASH_BYTE_READ?HAL_FLASH
+   *DEL*:           000025H   BYTE   UNIT     CODE           ?PR?_HAL_FLASH_BYTES_READ?HAL_FLASH
+   *DEL*:           000007H   BYTE   UNIT     XDATA          ?XD?_HAL_FLASH_BYTES_READ?HAL_FLASH
+   *DEL*:           000006H   BYTE   UNIT     CODE           ?PR?HAL_USB_GET_ADDRESS?HAL_USB
+   *DEL*:           000011H   BYTE   UNIT     CODE           ?PR?HAL_USB_WAKEUP?HAL_USB
+   *DEL*:           000003H   BYTE   UNIT     CODE           ?PR?HAL_USB_RESET?HAL_USB
+   *DEL*:           000008H   BYTE   UNIT     CODE           ?PR?HAL_USB_BUS_DISCONNECT?HAL_USB
+   *DEL*:           000008H   BYTE   UNIT     CODE           ?PR?HAL_USB_BUS_CONNECT?HAL_USB
+   *DEL*:           000004H   BYTE   UNIT     CODE           ?PR?HAL_USB_SLEEP?HAL_USB
+   *DEL*:           000034H   BYTE   UNIT     CODE           ?PR?_HAL_SPI_MASTER_INIT?HAL_SPI
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?_HAL_SPI_MASTER_READ_WRITE?HAL_SPI
+   *DEL*:           00002EH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_OPERATION_MODE?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_OPERATION_MODE?HAL_NRF
+   *DEL*:           00002EH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_POWER_MODE?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_POWER_MODE?HAL_NRF
+   *DEL*:           000048H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_CRC_MODE?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_CRC_MODE?HAL_NRF
+   *DEL*:           00007DH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_IRQ_MODE?HAL_NRF
+   *DEL*:           000003H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_IRQ_MODE?HAL_NRF
+   *DEL*:           00000CH   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_CLEAR_IRQ_FLAGS?HAL_NRF
+   *DEL*:           000024H   BYTE   UNIT     CODE           ?PR?HAL_NRF_CLEAR_IRQ_FLAGS_GET_STATUS?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     XDATA          ?XD?HAL_NRF_CLEAR_IRQ_FLAGS_GET_STATUS?HAL_NRF
+   *DEL*:           000011H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_CLEAR_IRQ_FLAG?HAL_NRF
+   *DEL*:           000008H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_IRQ_FLAGS?HAL_NRF
+   *DEL*:           000092H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_OPEN_PIPE?HAL_NRF
+   *DEL*:           000004H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_OPEN_PIPE?HAL_NRF
+   *DEL*:           00005CH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_CLOSE_PIPE?HAL_NRF
+   *DEL*:           000003H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_CLOSE_PIPE?HAL_NRF
+   *DEL*:           000050H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_ADDRESS?HAL_NRF
+   *DEL*:           000004H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_ADDRESS?HAL_NRF
+   *DEL*:           000048H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_GET_ADDRESS?HAL_NRF
+   *DEL*:           000004H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_GET_ADDRESS?HAL_NRF
+   *DEL*:           000021H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_AUTO_RETR?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_AUTO_RETR?HAL_NRF
+   *DEL*:           000017H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_ADDRESS_WIDTH?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_ADDRESS_WIDTH?HAL_NRF
+   *DEL*:           000007H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_RX_PAYLOAD_WIDTH?HAL_NRF
+   *DEL*:           0000C2H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_GET_PIPE_STATUS?HAL_NRF
+   *DEL*:           000005H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_GET_PIPE_STATUS?HAL_NRF
+   *DEL*:           000005H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_AUTO_RETR_STATUS?HAL_NRF
+   *DEL*:           000016H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_PACKET_LOST_CTR?HAL_NRF
+   *DEL*:           00003FH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_GET_RX_PAYLOAD_WIDTH?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_GET_RX_PAYLOAD_WIDTH?HAL_NRF
+   *DEL*:           000015H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_RF_CHANNEL?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_RF_CHANNEL?HAL_NRF
+   *DEL*:           000025H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_OUTPUT_POWER?HAL_NRF
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 6
+
+
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_OUTPUT_POWER?HAL_NRF
+   *DEL*:           000043H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_DATARATE?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_DATARATE?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_RX_FIFO_EMPTY?HAL_NRF
+   *DEL*:           00000CH   BYTE   UNIT     CODE           ?PR?HAL_NRF_RX_FIFO_FULL?HAL_NRF
+   *DEL*:           00000BH   BYTE   UNIT     CODE           ?PR?HAL_NRF_TX_FIFO_EMPTY?HAL_NRF
+   *DEL*:           00000CH   BYTE   UNIT     CODE           ?PR?HAL_NRF_TX_FIFO_FULL?HAL_NRF
+   *DEL*:           000016H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_TX_FIFO_STATUS?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_RX_FIFO_STATUS?HAL_NRF
+   *DEL*:           000005H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_FIFO_STATUS?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_TRANSMIT_ATTEMPTS?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_CARRIER_DETECT?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     CODE           ?PR?HAL_NRF_ACTIVATE_FEATURES?HAL_NRF
+   *DEL*:           00000EH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SETUP_DYNAMIC_PAYLOAD?HAL_NRF
+   *DEL*:           000001H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SETUP_DYNAMIC_PAYLOAD?HAL_NRF
+   *DEL*:           000030H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_ENABLE_DYNAMIC_PAYLOAD?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_ENABLE_DYNAMIC_PAYLOAD?HAL_NRF
+   *DEL*:           00002EH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_ENABLE_ACK_PAYLOAD?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_ENABLE_ACK_PAYLOAD?HAL_NRF
+   *DEL*:           00002CH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_ENABLE_DYNAMIC_ACK?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_ENABLE_DYNAMIC_ACK?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_WRITE_TX_PAYLOAD?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_WRITE_TX_PAYLOAD_NOACK?HAL_NRF
+   *DEL*:           00000FH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_WRITE_ACK_PAYLOAD?HAL_NRF
+   *DEL*:           000005H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_WRITE_ACK_PAYLOAD?HAL_NRF
+   *DEL*:           000005H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_READ_RX_PAYLOAD?HAL_NRF
+   *DEL*:           00000AH   BYTE   UNIT     CODE           ?PR?HAL_NRF_REUSE_TX?HAL_NRF
+   *DEL*:           000013H   BYTE   UNIT     CODE           ?PR?HAL_NRF_GET_REUSE_TX_STATUS?HAL_NRF
+   *DEL*:           00002FH   BYTE   UNIT     CODE           ?PR?_HAL_NRF_SET_PLL_MODE?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_SET_PLL_MODE?HAL_NRF
+   *DEL*:           000032H   BYTE   UNIT     CODE           ?PR?_HAL_NRF_ENABLE_CONTINIOUS_WAVE?HAL_NRF
+   *DEL*:           000002H   BYTE   UNIT     XDATA          ?XD?_HAL_NRF_ENABLE_CONTINIOUS_WAVE?HAL_NRF
+
+
+
+OVERLAY MAP OF MODULE:   .\build\usb_hid_rf (?C_STARTUP)
+
+
+FUNCTION/MODULE                               XDATA_GROUP
+--> CALLED FUNCTION/MODULE                    START  STOP
+=========================================================
+?C_C51STARTUP                                 ----- -----
+  +--> MAIN/MAIN
+  +--> ?C_INITSEG
+
+MAIN/MAIN                                     ----- -----
+  +--> _?RESET_CB/MAIN
+  +--> _?RESUME_CB/MAIN
+  +--> _?SUSPEND_CB/MAIN
+  +--> _?DEVICE_REQ_CB/MAIN
+  +--> _HAL_USB_INIT/HAL_USB
+  +--> _?EP_1_IN_CB/MAIN
+  +--> _HAL_USB_ENDPOINT_CONFIG/HAL_USB
+  +--> _?EP_2_OUT_CB/MAIN
+  +--> RF_CONFIG/MAIN
+  +--> HAL_USB_GET_STATE/HAL_USB
+  +--> _USB_SEND_TO_PC/MAIN
+  +--> NRF_TX_PACK_SEND/MAIN
+  +--> _DELAY_MS/HAL_DELAY
+
+_?RESET_CB/MAIN                               ----- -----
+
+_?RESUME_CB/MAIN                              ----- -----
+
+_?SUSPEND_CB/MAIN                             ----- -----
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 7
+
+
+
+_?DEVICE_REQ_CB/MAIN                          ----- -----
+  +--> _?HAL_USB_HID_DEVICE_REQ_PROC/HAL_USB_HID
+
+_?HAL_USB_HID_DEVICE_REQ_PROC/HAL_USB_HI+     ----- -----
+... D
+  +--> ?CO?USB_DESC
+
+?CO?USB_DESC                                  ----- -----
+
+_HAL_USB_INIT/HAL_USB                         80D2H 80DEH
+  +--> ?CO?USB_DESC
+  +--> _DELAY_MS/HAL_DELAY
+
+_DELAY_MS/HAL_DELAY                           ----- -----
+  +--> _DELAY_US/HAL_DELAY
+
+_DELAY_US/HAL_DELAY                           ----- -----
+
+_?EP_1_IN_CB/MAIN                             ----- -----
+
+_HAL_USB_ENDPOINT_CONFIG/HAL_USB              80D2H 80D5H
+
+_?EP_2_OUT_CB/MAIN                            ----- -----
+  +--> NRF_USB_OUT_PACKET/MAIN
+
+NRF_USB_OUT_PACKET/MAIN                       ----- -----
+
+RF_CONFIG/MAIN                                ----- -----
+  +--> NRF_CHECK/MAIN
+  +--> NRF_TX_MODE/MAIN
+
+NRF_CHECK/MAIN                                80D2H 80D6H
+  +--> ?CO?MAIN
+  +--> _HAL_NRF_WRITE_MULTIBYTE_REG/HAL_NRF
+  +--> _HAL_NRF_READ_MULTIBYTE_REG/HAL_NRF
+
+?CO?MAIN                                      ----- -----
+
+_HAL_NRF_WRITE_MULTIBYTE_REG/HAL_NRF          80E4H 80ECH
+
+_HAL_NRF_READ_MULTIBYTE_REG/HAL_NRF           80E4H 80EFH
+  +--> HAL_NRF_GET_ADDRESS_WIDTH/HAL_NRF
+  +--> HAL_NRF_GET_RX_DATA_SOURCE/HAL_NRF
+  +--> HAL_NRF_READ_RX_PAYLOAD_WIDTH/HAL_NRF
+  +--> _HAL_NRF_RW/HAL_NRF_HW
+
+HAL_NRF_GET_ADDRESS_WIDTH/HAL_NRF             ----- -----
+  +--> _HAL_NRF_READ_REG/HAL_NRF
+
+_HAL_NRF_READ_REG/HAL_NRF                     ----- -----
+
+HAL_NRF_GET_RX_DATA_SOURCE/HAL_NRF            ----- -----
+  +--> HAL_NRF_NOP/HAL_NRF
+
+HAL_NRF_NOP/HAL_NRF                           ----- -----
+  +--> _HAL_NRF_RW/HAL_NRF_HW
+
+_HAL_NRF_RW/HAL_NRF_HW                        ----- -----
+
+HAL_NRF_READ_RX_PAYLOAD_WIDTH/HAL_NRF         ----- -----
+  +--> _HAL_NRF_READ_REG/HAL_NRF
+
+NRF_TX_MODE/MAIN                              ----- -----
+  +--> _HAL_NRF_WRITE_MULTIBYTE_REG/HAL_NRF
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 8
+
+
+  +--> _HAL_NRF_WRITE_REG/HAL_NRF
+
+_HAL_NRF_WRITE_REG/HAL_NRF                    ----- -----
+
+HAL_USB_GET_STATE/HAL_USB                     ----- -----
+
+_USB_SEND_TO_PC/MAIN                          80D2H 80D5H
+  +--> APP_WAIT_WHILE_USB_PENDING/MAIN
+  +--> _HAL_USB_SEND_DATA/HAL_USB
+
+APP_WAIT_WHILE_USB_PENDING/MAIN               ----- -----
+
+_HAL_USB_SEND_DATA/HAL_USB                    80D6H 80DFH
+
+NRF_TX_PACK_SEND/MAIN                         ----- -----
+  +--> NRF_TX_MODE/MAIN
+  +--> HAL_NRF_FLUSH_TX/HAL_NRF
+  +--> _DELAY_MS/HAL_DELAY
+  +--> _HAL_NRF_WRITE_MULTIBYTE_REG/HAL_NRF
+
+HAL_NRF_FLUSH_TX/HAL_NRF                      ----- -----
+  +--> _HAL_NRF_RW/HAL_NRF_HW
+
+?C_INITSEG                                    ----- -----
+
+*** NEW ROOT ********************************
+
+NRF_ISR/MAIN                                  80E3H 80E3H
+  +--> _HAL_NRF_READ_REG/HAL_NRF
+  +--> _HAL_NRF_READ_MULTIBYTE_REG/HAL_NRF
+  +--> HAL_NRF_FLUSH_RX/HAL_NRF
+  +--> NRF_USB_IN_PACKET/MAIN
+  +--> HAL_NRF_FLUSH_TX/HAL_NRF
+  +--> NRF_RX_MODE/MAIN
+  +--> _HAL_NRF_WRITE_REG/HAL_NRF
+
+HAL_NRF_FLUSH_RX/HAL_NRF                      ----- -----
+  +--> _HAL_NRF_RW/HAL_NRF_HW
+
+NRF_USB_IN_PACKET/MAIN                        ----- -----
+
+NRF_RX_MODE/MAIN                              ----- -----
+  +--> _HAL_NRF_WRITE_MULTIBYTE_REG/HAL_NRF
+  +--> _HAL_NRF_WRITE_REG/HAL_NRF
+
+*** NEW ROOT ********************************
+
+USB_WU_ISR/HAL_USB                            ----- -----
+  +--> _DELAY_MS/HAL_DELAY
+
+*** NEW ROOT ********************************
+
+USB_ISR/HAL_USB                               80F0H 80F7H
+  +--> ISR_SUDAV/HAL_USB
+  +--> ISR_SUSPEND/HAL_USB
+  +--> ISR_USBRESET/HAL_USB
+  +--> PACKETIZER_ISR_EP0_IN/HAL_USB
+  +--> USB_PROCESS_DEV_REQ_CB_RESPONSE/HAL_USB
+  +--> _USB_PROCESS_EP_RESPONSE/HAL_USB
+
+ISR_SUDAV/HAL_USB                             ----- -----
+  +--> USB_PROCESS_GET_DESCRIPTOR/HAL_USB
+  +--> USB_PROCESS_GET_STATUS/HAL_USB
+  +--> _HAL_USB_ENDPOINT_STALL/HAL_USB
+  +--> USB_PROCESS_DEV_REQ_CB_RESPONSE/HAL_USB
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 9
+
+
+
+USB_PROCESS_GET_DESCRIPTOR/HAL_USB            ----- -----
+  +--> _PACKETIZE/HAL_USB
+  +--> PACKETIZER_ISR_EP0_IN/HAL_USB
+  +--> USB_PROCESS_DEV_REQ_CB_RESPONSE/HAL_USB
+
+_PACKETIZE/HAL_USB                            ----- -----
+
+PACKETIZER_ISR_EP0_IN/HAL_USB                 ----- -----
+
+USB_PROCESS_DEV_REQ_CB_RESPONSE/HAL_USB       80F8H 80FBH
+  +--> _PACKETIZE/HAL_USB
+  +--> PACKETIZER_ISR_EP0_IN/HAL_USB
+
+USB_PROCESS_GET_STATUS/HAL_USB                80F8H 80F9H
+
+_HAL_USB_ENDPOINT_STALL/HAL_USB               80F8H 80F9H
+
+ISR_SUSPEND/HAL_USB                           ----- -----
+
+ISR_USBRESET/HAL_USB                          ----- -----
+
+_USB_PROCESS_EP_RESPONSE/HAL_USB              ----- -----
+
+
+
+PUBLIC SYMBOLS OF MODULE:  .\build\usb_hid_rf (?C_STARTUP)
+
+
+      VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
+      =================================================
+*DEL*:00000000H   XDATA    BYTE      ?_hal_flash_bytes_read?BYTE
+*DEL*:00000000H   XDATA    BYTE      ?_hal_flash_bytes_write?BYTE
+*DEL*:00000000H   XDATA    BYTE      ?_hal_nrf_write_ack_payload?BYTE
+      020080E4H   XDATA    BYTE      ?_hal_nrf_write_multibyte_reg?BYTE
+      020080D2H   XDATA    BYTE      ?_hal_usb_init?BYTE
+      020080D6H   XDATA    BYTE      ?_hal_usb_send_data?BYTE
+      0100028BH   CODE     ---       ?C?ADDXBP
+      0100025FH   CODE     ---       ?C?CCASE
+      01000175H   CODE     ---       ?C?CLDOPTR
+      0100015CH   CODE     ---       ?C?CLDPTR
+      00000000H   NUMBER   ---       ?C?CODESEG
+      01000136H   CODE     ---       ?C?COPY
+      010001A2H   CODE     ---       ?C?CSTPTR
+      01000285H   CODE     ---       ?C?ICALL
+      01000289H   CODE     ---       ?C?ICALL2
+      010001B4H   CODE     ---       ?C?IILDX
+      010001CAH   CODE     ---       ?C?ILDIX
+      010002F2H   CODE     ---       ?C?PLDCODE
+      010002BCH   CODE     ---       ?C?PLDIDATA
+      0100022FH   CODE     ---       ?C?PLDOPTR
+      010002E0H   CODE     ---       ?C?PLDPDATA
+      010002CEH   CODE     ---       ?C?PLDXDATA
+      010002C5H   CODE     ---       ?C?PSTIDATA
+      010002E9H   CODE     ---       ?C?PSTPDATA
+      010001E0H   CODE     ---       ?C?PSTPTR
+      010002D7H   CODE     ---       ?C?PSTXDATA
+      010002AFH   CODE     ---       ?C?XBPOFF
+      00000000H   NUMBER   ---       ?C?XDATASEG
+      0000000AH   DATA     ---       ?C_IBP
+      0000000BH   DATA     ---       ?C_PBP
+      01000351H   CODE     ---       ?C_START
+      01000000H   CODE     NEAR LAB  ?C_STARTUP
+      00000008H   DATA     ---       ?C_XBP
+      01000BCFH   CODE     ---       _?device_req_cb
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 10
+
+
+      01000FCDH   CODE     ---       _?ep_1_in_cb
+      01000FE8H   CODE     ---       _?ep_2_out_cb
+      01000C5AH   CODE     ---       _?hal_usb_hid_device_req_proc
+      01000049H   CODE     ---       _?reset_cb
+      01000048H   CODE     ---       _?resume_cb
+      01000FB4H   CODE     ---       _?suspend_cb
+      0100002DH   CODE     ---       _delay_ms
+      01000549H   CODE     ---       _delay_us
+*DEL*:00000000H   CODE     ---       _hal_flash_byte_read
+*DEL*:00000000H   CODE     ---       _hal_flash_byte_write
+*DEL*:00000000H   CODE     ---       _hal_flash_bytes_read
+*DEL*:00000000H   CODE     ---       _hal_flash_bytes_write
+*DEL*:00000000H   CODE     ---       _hal_flash_page_erase
+*DEL*:00000000H   CODE     ---       _hal_nrf_clear_irq_flag
+*DEL*:00000000H   CODE     ---       _hal_nrf_close_pipe
+*DEL*:00000000H   CODE     ---       _hal_nrf_enable_ack_payload
+*DEL*:00000000H   CODE     ---       _hal_nrf_enable_continious_wave
+*DEL*:00000000H   CODE     ---       _hal_nrf_enable_dynamic_ack
+*DEL*:00000000H   CODE     ---       _hal_nrf_enable_dynamic_payload
+*DEL*:00000000H   CODE     ---       _hal_nrf_get_address
+*DEL*:00000000H   CODE     ---       _hal_nrf_get_pipe_status
+*DEL*:00000000H   CODE     ---       _hal_nrf_get_rx_payload_width
+*DEL*:00000000H   CODE     ---       _hal_nrf_open_pipe
+      010008E0H   CODE     ---       _hal_nrf_read_multibyte_reg
+      010008C8H   CODE     ---       _hal_nrf_read_reg
+*DEL*:00000000H   CODE     ---       _hal_nrf_read_rx_payload
+      0100004EH   CODE     ---       _hal_nrf_rw
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_address
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_address_width
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_auto_retr
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_crc_mode
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_datarate
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_irq_mode
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_operation_mode
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_output_power
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_pll_mode
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_power_mode
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_rf_channel
+*DEL*:00000000H   CODE     ---       _hal_nrf_set_rx_payload_width
+*DEL*:00000000H   CODE     ---       _hal_nrf_setup_dynamic_payload
+*DEL*:00000000H   CODE     ---       _hal_nrf_write_ack_payload
+      010005DBH   CODE     ---       _hal_nrf_write_multibyte_reg
+      01000596H   CODE     ---       _hal_nrf_write_reg
+*DEL*:00000000H   CODE     ---       _hal_nrf_write_tx_payload
+*DEL*:00000000H   CODE     ---       _hal_nrf_write_tx_payload_noack
+*DEL*:00000000H   CODE     ---       _hal_spi_master_init
+*DEL*:00000000H   CODE     ---       _hal_spi_master_read_write
+      010017F3H   CODE     ---       _hal_usb_endpoint_config
+      01001150H   CODE     ---       _hal_usb_endpoint_stall
+      0100102CH   CODE     ---       _hal_usb_init
+      01000AFCH   CODE     ---       _hal_usb_send_data
+      0200C789H   XDATA    BYTE      bin1addr
+      0200C78AH   XDATA    BYTE      bin2addr
+      0200C78BH   XDATA    BYTE      bin3addr
+      0200C78CH   XDATA    BYTE      bin4addr
+      0200C78DH   XDATA    BYTE      bin5addr
+      0200C788H   XDATA    BYTE      binstaddr
+      0200C781H   XDATA    BYTE      bout1addr
+      0200C782H   XDATA    BYTE      bout2addr
+      0200C783H   XDATA    BYTE      bout3addr
+      0200C784H   XDATA    BYTE      bout4addr
+      0200C785H   XDATA    BYTE      bout5addr
+      0200C7B4H   XDATA    BYTE      ep0cs
+      0200C7DBH   XDATA    BYTE      fnaddr
+      020080AEH   XDATA    ---       g_hal_usb
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 11
+
+
+      010003C7H   CONST    ---       g_usb_conf_desc
+      01000396H   CONST    ---       g_usb_dev_desc
+      010003C0H   CONST    ---       g_usb_hid_hids
+      010003A8H   CONST    ---       g_usb_hid_report_data
+      01000462H   CONST    ---       g_usb_string_desc
+      010003F0H   CONST    ---       g_usb_string_desc_1
+      0100041AH   CONST    ---       g_usb_string_desc_2
+*DEL*:00000000H   CODE     ---       hal_nrf_activate_features
+*DEL*:00000000H   CODE     ---       hal_nrf_clear_irq_flags_get_status
+      01000BA5H   CODE     ---       hal_nrf_flush_rx
+      0100003FH   CODE     ---       hal_nrf_flush_tx
+      01000B8FH   CODE     ---       hal_nrf_get_address_width
+*DEL*:00000000H   CODE     ---       hal_nrf_get_auto_retr_status
+*DEL*:00000000H   CODE     ---       hal_nrf_get_carrier_detect
+*DEL*:00000000H   CODE     ---       hal_nrf_get_clear_irq_flags
+*DEL*:00000000H   CODE     ---       hal_nrf_get_fifo_status
+*DEL*:00000000H   CODE     ---       hal_nrf_get_irq_flags
+*DEL*:00000000H   CODE     ---       hal_nrf_get_packet_lost_ctr
+*DEL*:00000000H   CODE     ---       hal_nrf_get_reuse_tx_status
+      01000B98H   CODE     ---       hal_nrf_get_rx_data_source
+*DEL*:00000000H   CODE     ---       hal_nrf_get_rx_fifo_status
+*DEL*:00000000H   CODE     ---       hal_nrf_get_transmit_attempts
+*DEL*:00000000H   CODE     ---       hal_nrf_get_tx_fifo_status
+      01000BAFH   CODE     ---       hal_nrf_nop
+      0100005EH   CODE     ---       hal_nrf_read_rx_payload_width
+*DEL*:00000000H   CODE     ---       hal_nrf_reuse_tx
+*DEL*:00000000H   CODE     ---       hal_nrf_rx_fifo_empty
+*DEL*:00000000H   CODE     ---       hal_nrf_rx_fifo_full
+*DEL*:00000000H   CODE     ---       hal_nrf_tx_fifo_empty
+*DEL*:00000000H   CODE     ---       hal_nrf_tx_fifo_full
+*DEL*:00000000H   CODE     ---       hal_usb_bus_connect
+*DEL*:00000000H   CODE     ---       hal_usb_bus_disconnect
+*DEL*:00000000H   CODE     ---       hal_usb_get_address
+      010018E0H   CODE     ---       hal_usb_get_state
+*DEL*:00000000H   CODE     ---       hal_usb_reset
+*DEL*:00000000H   CODE     ---       hal_usb_sleep
+*DEL*:00000000H   CODE     ---       hal_usb_wakeup
+      0200C7B5H   XDATA    BYTE      in0bc
+      0200C700H   XDATA    ---       in0buf
+      0200C7B7H   XDATA    BYTE      in1bc
+      0200C680H   XDATA    ---       in1buf
+      0200C7B6H   XDATA    BYTE      in1cs
+      0200C7B9H   XDATA    BYTE      in2bc
+      0200C600H   XDATA    ---       in2buf
+      0200C7B8H   XDATA    BYTE      in2cs
+      0200C7BBH   XDATA    BYTE      in3bc
+      0200C580H   XDATA    ---       in3buf
+      0200C7BAH   XDATA    BYTE      in3cs
+      0200C7BDH   XDATA    BYTE      in4bc
+      0200C500H   XDATA    ---       in4buf
+      0200C7BCH   XDATA    BYTE      in4cs
+      0200C7BFH   XDATA    BYTE      in5bc
+      0200C480H   XDATA    ---       in5buf
+      0200C7BEH   XDATA    BYTE      in5cs
+      0200C7F8H   XDATA    BYTE      in8addr
+      0200C768H   XDATA    BYTE      in8data
+      0200C7ACH   XDATA    BYTE      in_ien
+      0200C7A9H   XDATA    BYTE      in_irq
+      0200C7DEH   XDATA    BYTE      inbulkval
+      0200C7E0H   XDATA    BYTE      inisoval
+      0200C7A0H   XDATA    BYTE      isoerr
+      0200C7E3H   XDATA    BYTE      isosize
+      0200C7E2H   XDATA    BYTE      isostaddr
+      0200C7A8H   XDATA    BYTE      ivec
+      01000468H   CODE     ---       main
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 12
+
+
+      010006F3H   CODE     ---       NRF_Check
+      01000847H   CODE     ---       nrf_isr
+      010005B6H   CODE     ---       nrf_rx_mode
+      01000558H   CODE     ---       nrf_tx_mode
+      0200C7C5H   XDATA    BYTE      out0bc
+      0200C6C0H   XDATA    ---       out0buf
+      0200C7C7H   XDATA    BYTE      out1bc
+      0200C640H   XDATA    ---       out1buf
+      0200C7C6H   XDATA    BYTE      out1cs
+      0200C7C9H   XDATA    BYTE      out2bc
+      0200C5C0H   XDATA    ---       out2buf
+      0200C7C8H   XDATA    BYTE      out2cs
+      0200C7CBH   XDATA    BYTE      out3bc
+      0200C540H   XDATA    ---       out3buf
+      0200C7CAH   XDATA    BYTE      out3cs
+      0200C7CDH   XDATA    BYTE      out4bc
+      0200C4C0H   XDATA    ---       out4buf
+      0200C7CCH   XDATA    BYTE      out4cs
+      0200C7CFH   XDATA    BYTE      out5bc
+      0200C440H   XDATA    ---       out5buf
+      0200C7CEH   XDATA    BYTE      out5cs
+      0200C7F0H   XDATA    BYTE      out8addr
+      0200C770H   XDATA    BYTE      out8bch
+      0200C771H   XDATA    BYTE      out8bcl
+      0200C760H   XDATA    BYTE      out8data
+      0200C7ADH   XDATA    BYTE      out_ien
+      0200C7AAH   XDATA    BYTE      out_irq
+      0200C7DFH   XDATA    BYTE      outbulkval
+      0200C7E1H   XDATA    BYTE      outisoval
+      0200C7E8H   XDATA    ---       setupbuf
+      0200C7D7H   XDATA    BYTE      togctl
+      02008002H   XDATA    ---       TX_RX_ADDRESS
+      0100151DH   CODE     ---       usb_isr
+      010019C7H   CODE     ---       usb_wu_isr
+      0200C7AFH   XDATA    BYTE      usbbav
+      0200C7D6H   XDATA    BYTE      usbcs
+      0200C7D9H   XDATA    BYTE      usbfrmh
+      0200C7D8H   XDATA    BYTE      usbfrml
+      0200C7AEH   XDATA    BYTE      usbien
+      0200C7ABH   XDATA    BYTE      usbirq
+      0200C7DDH   XDATA    BYTE      usbpair
+      0200C7A2H   XDATA    BYTE      zbcout
+
+
+
+SYMBOL TABLE OF MODULE:  .\build\usb_hid_rf (?C_STARTUP)
+
+      VALUE       REP       CLASS    TYPE      SYMBOL NAME
+      ====================================================
+      ---         MODULE    ---      ---       ?C_STARTUP
+      01000000H   PUBLIC    CODE     NEAR LAB  ?C_STARTUP
+
+      ---         MODULE    ---      ---       MAIN
+      02008002H   PUBLIC    XDATA    ---       TX_RX_ADDRESS
+      01000FE8H   PUBLIC    CODE     ---       _?ep_2_out_cb
+      01000FCDH   PUBLIC    CODE     ---       _?ep_1_in_cb
+      01000049H   PUBLIC    CODE     ---       _?reset_cb
+      01000048H   PUBLIC    CODE     ---       _?resume_cb
+      01000FB4H   PUBLIC    CODE     ---       _?suspend_cb
+      01000BCFH   PUBLIC    CODE     ---       _?device_req_cb
+      01000847H   PUBLIC    CODE     ---       nrf_isr
+      010006F3H   PUBLIC    CODE     ---       NRF_Check
+      010005B6H   PUBLIC    CODE     ---       nrf_rx_mode
+      01000558H   PUBLIC    CODE     ---       nrf_tx_mode
+      01000468H   PUBLIC    CODE     ---       main
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 13
+
+
+
+      01000468H   BLOCK     CODE     ---       LVL=0
+      01000468H   LINE      ---      ---       #97
+      01000468H   LINE      ---      ---       #98
+      01000468H   LINE      ---      ---       #99
+      0100046BH   LINE      ---      ---       #100
+      0100046DH   LINE      ---      ---       #103
+      0100049EH   LINE      ---      ---       #104
+      010004A9H   LINE      ---      ---       #105
+      010004B6H   LINE      ---      ---       #107
+      010004B8H   LINE      ---      ---       #109
+      010004B8H   LINE      ---      ---       #110
+      010004B8H   LINE      ---      ---       #111
+      010004BEH   LINE      ---      ---       #112
+      010004BEH   LINE      ---      ---       #113
+      010004C5H   LINE      ---      ---       #114
+      010004C5H   LINE      ---      ---       #115
+      010004C7H   LINE      ---      ---       #116
+      010004C7H   LINE      ---      ---       #117
+      010004C7H   LINE      ---      ---       #119
+      010004CEH   LINE      ---      ---       #120
+      010004CEH   LINE      ---      ---       #121
+      010004D9H   LINE      ---      ---       #122
+      010004DEH   LINE      ---      ---       #123
+      010004E0H   LINE      ---      ---       #124
+      010004E0H   LINE      ---      ---       #125
+      010004E2H   LINE      ---      ---       #126
+      010004E8H   LINE      ---      ---       #127
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010004EAH   BLOCK     CODE     ---       LVL=0
+      010004EAH   LINE      ---      ---       #133
+      010004EAH   LINE      ---      ---       #134
+      010004EAH   BLOCK     CODE     NEAR LAB  LVL=1
+      010004EAH   LINE      ---      ---       #137
+      010004F0H   LINE      ---      ---       #138
+      010004F0H   LINE      ---      ---       #139
+      010004F4H   LINE      ---      ---       #140
+      010004F8H   LINE      ---      ---       #141
+      010004FAH   LINE      ---      ---       #142
+      010004FCH   LINE      ---      ---       #143
+      010004FEH   LINE      ---      ---       #145
+      010004FEH   LINE      ---      ---       #146
+      010004FEH   LINE      ---      ---       #147
+      01000508H   LINE      ---      ---       #148
+      01000508H   LINE      ---      ---       #150
+      0100050AH   LINE      ---      ---       #151
+      0100050BH   LINE      ---      ---       #152
+      0100050BH   LINE      ---      ---       #153
+      01000518H   LINE      ---      ---       #154
+      0100051DH   LINE      ---      ---       #155
+      01000520H   LINE      ---      ---       #156
+      01000524H   LINE      ---      ---       #157
+      01000524H   LINE      ---      ---       #159
+      01000526H   LINE      ---      ---       #160
+      01000528H   LINE      ---      ---       #161
+      0100052AH   LINE      ---      ---       #162
+      0100052CH   LINE      ---      ---       #163
+      0100053CH   LINE      ---      ---       #164
+      0100053EH   LINE      ---      ---       #165
+      00000007H   SYMBOL    DATA     VOID      cnt
+      00000006H   SYMBOL    DATA     VOID      sum
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 14
+
+
+      01000737H   BLOCK     CODE     ---       LVL=0
+      01000737H   LINE      ---      ---       #170
+      01000737H   LINE      ---      ---       #171
+      01000737H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000737H   LINE      ---      ---       #175
+      01000753H   LINE      ---      ---       #176
+      01000753H   LINE      ---      ---       #178
+      01000755H   LINE      ---      ---       #179
+      01000756H   LINE      ---      ---       #180
+      01000756H   LINE      ---      ---       #181
+      01000763H   LINE      ---      ---       #182
+      01000768H   LINE      ---      ---       #183
+      0100076BH   LINE      ---      ---       #184
+      01000778H   LINE      ---      ---       #185
+      01000778H   LINE      ---      ---       #187
+      01000778H   LINE      ---      ---       #189
+      0100077FH   LINE      ---      ---       #190
+      0100077FH   LINE      ---      ---       #191
+      01000785H   LINE      ---      ---       #192
+      01000787H   LINE      ---      ---       #194
+      01000787H   LINE      ---      ---       #195
+      0100078CH   LINE      ---      ---       #196
+      0100078CH   LINE      ---      ---       #198
+      0100078EH   LINE      ---      ---       #199
+      01000790H   LINE      ---      ---       #200
+      01000790H   LINE      ---      ---       #201
+      010007A8H   LINE      ---      ---       #202
+      010007B5H   LINE      ---      ---       #203
+      010007BAH   LINE      ---      ---       #204
+      010007BCH   LINE      ---      ---       #205
+      010007C0H   LINE      ---      ---       #207
+      010007C6H   LINE      ---      ---       #208
+      00000007H   SYMBOL    DATA     VOID      sum
+      00000006H   SYMBOL    DATA     VOID      cnt
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010007C7H   BLOCK     CODE     ---       LVL=0
+      010007C7H   LINE      ---      ---       #213
+      010007C7H   LINE      ---      ---       #214
+      010007C7H   BLOCK     CODE     NEAR LAB  LVL=1
+      010007C7H   LINE      ---      ---       #218
+      010007C9H   LINE      ---      ---       #219
+      010007CAH   LINE      ---      ---       #220
+      010007CAH   LINE      ---      ---       #221
+      010007D7H   LINE      ---      ---       #222
+      010007DCH   LINE      ---      ---       #223
+      010007DFH   LINE      ---      ---       #224
+      010007ECH   LINE      ---      ---       #225
+      010007ECH   LINE      ---      ---       #227
+      010007ECH   LINE      ---      ---       #230
+      010007F4H   LINE      ---      ---       #231
+      010007F4H   LINE      ---      ---       #232
+      010007FAH   LINE      ---      ---       #233
+      010007FDH   LINE      ---      ---       #234
+      01000801H   LINE      ---      ---       #237
+      01000809H   LINE      ---      ---       #238
+      01000811H   LINE      ---      ---       #239
+      01000819H   LINE      ---      ---       #240
+      01000821H   LINE      ---      ---       #241
+      01000821H   LINE      ---      ---       #242
+      01000821H   LINE      ---      ---       #243
+      0100082BH   LINE      ---      ---       #244
+      0100082BH   LINE      ---      ---       #247
+      0100082DH   LINE      ---      ---       #248
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 15
+
+
+      0100082EH   LINE      ---      ---       #249
+      0100082EH   LINE      ---      ---       #250
+      0100083BH   LINE      ---      ---       #251
+      01000840H   LINE      ---      ---       #252
+      01000842H   LINE      ---      ---       #253
+      01000846H   LINE      ---      ---       #254
+      01000846H   LINE      ---      ---       #255
+      00000007H   SYMBOL    DATA     VOID      sum
+      00000006H   SYMBOL    DATA     VOID      cnt
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01000558H   BLOCK     CODE     ---       LVL=0
+      01000558H   LINE      ---      ---       #261
+      01000558H   LINE      ---      ---       #262
+      01000558H   LINE      ---      ---       #263
+      0100055AH   LINE      ---      ---       #265
+      01000562H   LINE      ---      ---       #266
+      01000564H   LINE      ---      ---       #269
+      0100056AH   LINE      ---      ---       #270
+      01000570H   LINE      ---      ---       #271
+      01000576H   LINE      ---      ---       #272
+      0100057BH   LINE      ---      ---       #274
+      0100057DH   LINE      ---      ---       #275
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010005B6H   BLOCK     CODE     ---       LVL=0
+      010005B6H   LINE      ---      ---       #281
+      010005B6H   LINE      ---      ---       #282
+      010005B6H   LINE      ---      ---       #283
+      010005B8H   LINE      ---      ---       #285
+      010005BAH   LINE      ---      ---       #288
+      010005C0H   LINE      ---      ---       #289
+      010005C6H   LINE      ---      ---       #290
+      010005CCH   LINE      ---      ---       #291
+      010005D0H   LINE      ---      ---       #293
+      010005D2H   LINE      ---      ---       #294
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010006E0H   BLOCK     CODE     ---       LVL=0
+      010006E0H   LINE      ---      ---       #301
+      010006E0H   LINE      ---      ---       #302
+      010006E0H   LINE      ---      ---       #304
+      010006E3H   LINE      ---      ---       #305
+      010006E5H   LINE      ---      ---       #307
+      010006EAH   LINE      ---      ---       #308
+      010006EAH   LINE      ---      ---       #309
+      010006ECH   LINE      ---      ---       #310
+      010006ECH   LINE      ---      ---       #311
+      010006EEH   LINE      ---      ---       #313
+      010006F0H   LINE      ---      ---       #314
+      010006F2H   LINE      ---      ---       #315
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010006F3H   BLOCK     CODE     ---       LVL=0
+      010006F3H   LINE      ---      ---       #322
+      010006F3H   LINE      ---      ---       #323
+      010006F3H   BLOCK     CODE     NEAR LAB  LVL=1
+      010006F3H   LINE      ---      ---       #324
+      01000705H   LINE      ---      ---       #326
+      0100070DH   LINE      ---      ---       #327
+      01000718H   LINE      ---      ---       #328
+      0100072DH   LINE      ---      ---       #329
+      01000736H   LINE      ---      ---       #330
+      01000736H   LINE      ---      ---       #331
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 16
+
+
+      020080D2H   SYMBOL    XDATA    VOID      buf
+      00000007H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01000847H   BLOCK     CODE     ---       LVL=0
+      01000864H   LINE      ---      ---       #340
+      01000864H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000864H   LINE      ---      ---       #344
+      0100086DH   LINE      ---      ---       #346
+      01000870H   LINE      ---      ---       #347
+      01000870H   LINE      ---      ---       #348
+      0100087AH   LINE      ---      ---       #349
+      0100087CH   LINE      ---      ---       #350
+      0100087FH   LINE      ---      ---       #351
+      01000885H   LINE      ---      ---       #355
+      01000887H   LINE      ---      ---       #357
+      01000893H   LINE      ---      ---       #358
+      01000893H   LINE      ---      ---       #359
+      01000893H   LINE      ---      ---       #360
+      01000893H   LINE      ---      ---       #361
+      01000895H   LINE      ---      ---       #363
+      0100089DH   LINE      ---      ---       #364
+      0100089DH   LINE      ---      ---       #365
+      010008A0H   LINE      ---      ---       #366
+      010008A3H   LINE      ---      ---       #367
+      010008A3H   LINE      ---      ---       #369
+      010008ADH   LINE      ---      ---       #370
+      020080E3H   SYMBOL    XDATA    VOID      irq_flags
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01000AD3H   BLOCK     CODE     ---       LVL=0
+      01000AD3H   LINE      ---      ---       #383
+      01000AE1H   LINE      ---      ---       #384
+      01000AE1H   LINE      ---      ---       #385
+      01000AE3H   LINE      ---      ---       #386
+      01000AE9H   LINE      ---      ---       #388
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000BB9H   BLOCK     CODE     ---       LVL=0
+      01000BB9H   LINE      ---      ---       #392
+      01000BB9H   LINE      ---      ---       #393
+      01000BB9H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000BB9H   LINE      ---      ---       #394
+      01000BBDH   LINE      ---      ---       #395
+      01000BC7H   LINE      ---      ---       #396
+      01000BC7H   LINE      ---      ---       #397
+      01000BCDH   LINE      ---      ---       #398
+      01000BCDH   LINE      ---      ---       #399
+      01000BCEH   LINE      ---      ---       #400
+      01000BCEH   LINE      ---      ---       #402
+      00000006H   SYMBOL    DATA     VOID      timeout
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01000BCFH   BLOCK     CODE     ---       LVL=0
+      01000BCFH   LINE      ---      ---       #408
+      01000BE3H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000BE3H   LINE      ---      ---       #412
+      01000C48H   LINE      ---      ---       #413
+      01000C48H   LINE      ---      ---       #415
+      01000C52H   LINE      ---      ---       #416
+      01000C52H   LINE      ---      ---       #418
+      01000C52H   LINE      ---      ---       #420
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 17
+
+
+      01000C54H   LINE      ---      ---       #421
+      01000C54H   LINE      ---      ---       #422
+      00000000H   SYMBOL    XSTK     VOID      retval
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01000FB4H   BLOCK     CODE     ---       LVL=0
+      01000FB4H   LINE      ---      ---       #424
+      01000FBCH   LINE      ---      ---       #426
+      01000FBFH   LINE      ---      ---       #427
+      01000FC7H   LINE      ---      ---       #428
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000048H   BLOCK     CODE     ---       LVL=0
+      01000048H   LINE      ---      ---       #430
+      01000048H   LINE      ---      ---       #432
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000049H   BLOCK     CODE     ---       LVL=0
+      01000049H   LINE      ---      ---       #434
+      01000049H   LINE      ---      ---       #436
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000FCDH   BLOCK     CODE     ---       LVL=0
+      01000FCDH   LINE      ---      ---       #441
+      01000FDBH   LINE      ---      ---       #443
+      01000FE0H   LINE      ---      ---       #444
+      01000FE2H   LINE      ---      ---       #445
+      01000FE2H   LINE      ---      ---       #446
+      01000FE2H   LINE      ---      ---       #447
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000FE8H   BLOCK     CODE     ---       LVL=0
+      01000FE8H   LINE      ---      ---       #449
+      01000FF6H   LINE      ---      ---       #451
+      01001021H   LINE      ---      ---       #455
+      01001024H   LINE      ---      ---       #457
+      01001026H   LINE      ---      ---       #458
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       USB_DESC
+      01000462H   PUBLIC    CONST    ---       g_usb_string_desc
+      0100041AH   PUBLIC    CONST    ---       g_usb_string_desc_2
+      010003F0H   PUBLIC    CONST    ---       g_usb_string_desc_1
+      010003C7H   PUBLIC    CONST    ---       g_usb_conf_desc
+      010003C0H   PUBLIC    CONST    ---       g_usb_hid_hids
+      010003A8H   PUBLIC    CONST    ---       g_usb_hid_report_data
+      01000396H   PUBLIC    CONST    ---       g_usb_dev_desc
+
+      ---         MODULE    ---      ---       HAL_FLASH
+      00000006H   SYMBOL    DATA     VOID      ckcon_val
+      00000082H   SYMBOL    DATA     VOID      pb
+      00000001H   SYMBOL    DATA     VOID      ckcon_val
+      00000082H   SYMBOL    DATA     VOID      pb
+      00000006H   SYMBOL    DATA     VOID      pb
+
+      ---         MODULE    ---      ---       HAL_USB
+      0200C7D9H   PUBLIC    XDATA    BYTE      usbfrmh
+      0200C7DDH   PUBLIC    XDATA    BYTE      usbpair
+      0200C7ADH   PUBLIC    XDATA    BYTE      out_ien
+      0200C7ACH   PUBLIC    XDATA    BYTE      in_ien
+      0200C7E8H   PUBLIC    XDATA    ---       setupbuf
+      0200C7DBH   PUBLIC    XDATA    BYTE      fnaddr
+      0200C7E1H   PUBLIC    XDATA    BYTE      outisoval
+      0200C7E0H   PUBLIC    XDATA    BYTE      inisoval
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 18
+
+
+      0200C7CEH   PUBLIC    XDATA    BYTE      out5cs
+      0200C7CCH   PUBLIC    XDATA    BYTE      out4cs
+      0200C7BEH   PUBLIC    XDATA    BYTE      in5cs
+      0200C7CAH   PUBLIC    XDATA    BYTE      out3cs
+      0200C7BCH   PUBLIC    XDATA    BYTE      in4cs
+      0200C7C8H   PUBLIC    XDATA    BYTE      out2cs
+      0200C7BAH   PUBLIC    XDATA    BYTE      in3cs
+      0200C7C6H   PUBLIC    XDATA    BYTE      out1cs
+      0200C7B8H   PUBLIC    XDATA    BYTE      in2cs
+      0200C7B6H   PUBLIC    XDATA    BYTE      in1cs
+      0200C7B4H   PUBLIC    XDATA    BYTE      ep0cs
+      0200C7CFH   PUBLIC    XDATA    BYTE      out5bc
+      0200C7CDH   PUBLIC    XDATA    BYTE      out4bc
+      0200C7BFH   PUBLIC    XDATA    BYTE      in5bc
+      0200C7CBH   PUBLIC    XDATA    BYTE      out3bc
+      0200C7E2H   PUBLIC    XDATA    BYTE      isostaddr
+      0200C7BDH   PUBLIC    XDATA    BYTE      in4bc
+      0200C7C9H   PUBLIC    XDATA    BYTE      out2bc
+      0200C7BBH   PUBLIC    XDATA    BYTE      in3bc
+      0200C7C7H   PUBLIC    XDATA    BYTE      out1bc
+      0200C7B9H   PUBLIC    XDATA    BYTE      in2bc
+      0200C7C5H   PUBLIC    XDATA    BYTE      out0bc
+      0200C7DFH   PUBLIC    XDATA    BYTE      outbulkval
+      0200C7B7H   PUBLIC    XDATA    BYTE      in1bc
+      0200C440H   PUBLIC    XDATA    ---       out5buf
+      0200C7B5H   PUBLIC    XDATA    BYTE      in0bc
+      0200C7DEH   PUBLIC    XDATA    BYTE      inbulkval
+      0200C4C0H   PUBLIC    XDATA    ---       out4buf
+      0200C480H   PUBLIC    XDATA    ---       in5buf
+      0200C540H   PUBLIC    XDATA    ---       out3buf
+      0200C500H   PUBLIC    XDATA    ---       in4buf
+      0200C5C0H   PUBLIC    XDATA    ---       out2buf
+      0200C580H   PUBLIC    XDATA    ---       in3buf
+      0200C640H   PUBLIC    XDATA    ---       out1buf
+      0200C600H   PUBLIC    XDATA    ---       in2buf
+      0200C6C0H   PUBLIC    XDATA    ---       out0buf
+      0200C680H   PUBLIC    XDATA    ---       in1buf
+      0200C700H   PUBLIC    XDATA    ---       in0buf
+      0200C771H   PUBLIC    XDATA    BYTE      out8bcl
+      0200C770H   PUBLIC    XDATA    BYTE      out8bch
+      0200C788H   PUBLIC    XDATA    BYTE      binstaddr
+      0200C7F0H   PUBLIC    XDATA    BYTE      out8addr
+      0200C760H   PUBLIC    XDATA    BYTE      out8data
+      0200C7F8H   PUBLIC    XDATA    BYTE      in8addr
+      0200C768H   PUBLIC    XDATA    BYTE      in8data
+      020080AEH   PUBLIC    XDATA    ---       g_hal_usb
+      0200C7A8H   PUBLIC    XDATA    BYTE      ivec
+      0200C7D6H   PUBLIC    XDATA    BYTE      usbcs
+      0200C7A2H   PUBLIC    XDATA    BYTE      zbcout
+      0200C7ABH   PUBLIC    XDATA    BYTE      usbirq
+      0200C7A0H   PUBLIC    XDATA    BYTE      isoerr
+      0200C7D7H   PUBLIC    XDATA    BYTE      togctl
+      0200C785H   PUBLIC    XDATA    BYTE      bout5addr
+      0200C784H   PUBLIC    XDATA    BYTE      bout4addr
+      0200C783H   PUBLIC    XDATA    BYTE      bout3addr
+      0200C78DH   PUBLIC    XDATA    BYTE      bin5addr
+      0200C782H   PUBLIC    XDATA    BYTE      bout2addr
+      0200C78CH   PUBLIC    XDATA    BYTE      bin4addr
+      0200C781H   PUBLIC    XDATA    BYTE      bout1addr
+      0200C78BH   PUBLIC    XDATA    BYTE      bin3addr
+      0200C78AH   PUBLIC    XDATA    BYTE      bin2addr
+      0200C7E3H   PUBLIC    XDATA    BYTE      isosize
+      0200C789H   PUBLIC    XDATA    BYTE      bin1addr
+      0200C7AEH   PUBLIC    XDATA    BYTE      usbien
+      0200C7AAH   PUBLIC    XDATA    BYTE      out_irq
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 19
+
+
+      0200C7AFH   PUBLIC    XDATA    BYTE      usbbav
+      0200C7A9H   PUBLIC    XDATA    BYTE      in_irq
+      0200C7D8H   PUBLIC    XDATA    BYTE      usbfrml
+      0100151DH   PUBLIC    CODE     ---       usb_isr
+      010019C7H   PUBLIC    CODE     ---       usb_wu_isr
+      020080D6H   PUBLIC    XDATA    BYTE      ?_hal_usb_send_data?BYTE
+      01000AFCH   PUBLIC    CODE     ---       _hal_usb_send_data
+      010018E0H   PUBLIC    CODE     ---       hal_usb_get_state
+      010017F3H   PUBLIC    CODE     ---       _hal_usb_endpoint_config
+      01001150H   PUBLIC    CODE     ---       _hal_usb_endpoint_stall
+      020080D2H   PUBLIC    XDATA    BYTE      ?_hal_usb_init?BYTE
+      0100102CH   PUBLIC    CODE     ---       _hal_usb_init
+
+      0100102CH   BLOCK     CODE     ---       LVL=0
+      0100102CH   LINE      ---      ---       #57
+      01001037H   LINE      ---      ---       #58
+      01001037H   LINE      ---      ---       #60
+      01001045H   LINE      ---      ---       #61
+      01001053H   LINE      ---      ---       #62
+      01001061H   LINE      ---      ---       #65
+      01001067H   LINE      ---      ---       #66
+      0100106AH   LINE      ---      ---       #67
+      0100106EH   LINE      ---      ---       #68
+      01001072H   LINE      ---      ---       #71
+      01001078H   LINE      ---      ---       #72
+      0100107DH   LINE      ---      ---       #73
+      01001081H   LINE      ---      ---       #76
+      01001085H   LINE      ---      ---       #77
+      01001087H   LINE      ---      ---       #80
+      0100109CH   LINE      ---      ---       #81
+      010010B1H   LINE      ---      ---       #82
+      010010C6H   LINE      ---      ---       #83
+      010010DBH   LINE      ---      ---       #86
+      010010DEH   LINE      ---      ---       #87
+      010010DEH   LINE      ---      ---       #88
+      010010E5H   LINE      ---      ---       #89
+      010010ECH   LINE      ---      ---       #90
+      010010F0H   LINE      ---      ---       #91
+      010010F0H   LINE      ---      ---       #94
+      010010F2H   LINE      ---      ---       #95
+      010010F4H   LINE      ---      ---       #97
+      010010FAH   LINE      ---      ---       #99
+      01001100H   LINE      ---      ---       #100
+      01001106H   LINE      ---      ---       #101
+      0100110CH   LINE      ---      ---       #102
+      01001112H   LINE      ---      ---       #105
+      01001118H   LINE      ---      ---       #106
+      0100111CH   LINE      ---      ---       #107
+      01001120H   LINE      ---      ---       #108
+      01001124H   LINE      ---      ---       #109
+      01001128H   LINE      ---      ---       #111
+      0100112EH   LINE      ---      ---       #112
+      01001132H   LINE      ---      ---       #113
+      01001136H   LINE      ---      ---       #114
+      0100113AH   LINE      ---      ---       #115
+      0100113EH   LINE      ---      ---       #116
+      01001142H   LINE      ---      ---       #119
+      01001148H   LINE      ---      ---       #120
+      0100114AH   LINE      ---      ---       #121
+      0100114DH   LINE      ---      ---       #122
+      0100114FH   LINE      ---      ---       #123
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01001150H   BLOCK     CODE     ---       LVL=0
+      01001150H   LINE      ---      ---       #125
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 20
+
+
+      01001150H   LINE      ---      ---       #126
+      01001150H   BLOCK     CODE     NEAR LAB  LVL=1
+      01001150H   LINE      ---      ---       #130
+      01001157H   LINE      ---      ---       #133
+      0100115BH   LINE      ---      ---       #134
+      0100115BH   LINE      ---      ---       #136
+      01001164H   LINE      ---      ---       #137
+      01001166H   LINE      ---      ---       #139
+      01001166H   LINE      ---      ---       #141
+      0100117AH   LINE      ---      ---       #142
+      0100117AH   LINE      ---      ---       #144
+      01001181H   LINE      ---      ---       #145
+      01001181H   LINE      ---      ---       #147
+      0100118CH   LINE      ---      ---       #148
+      0100118DH   LINE      ---      ---       #150
+      0100118DH   LINE      ---      ---       #152
+      01001197H   LINE      ---      ---       #153
+      01001197H   LINE      ---      ---       #154
+      00000006H   SYMBOL    DATA     VOID      temp
+      020080F8H   SYMBOL    XDATA    VOID      cs_ptr
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010017F3H   BLOCK     CODE     ---       LVL=0
+      010017F3H   LINE      ---      ---       #161
+      01001800H   LINE      ---      ---       #162
+      01001800H   BLOCK     CODE     NEAR LAB  LVL=1
+      01001800H   LINE      ---      ---       #164
+      01001806H   LINE      ---      ---       #165
+      01001815H   LINE      ---      ---       #168
+      01001815H   LINE      ---      ---       #170
+      01001819H   LINE      ---      ---       #171
+      01001819H   LINE      ---      ---       #172
+      0100183AH   LINE      ---      ---       #173
+      0100184BH   LINE      ---      ---       #174
+      0100184BH   LINE      ---      ---       #176
+      01001858H   LINE      ---      ---       #177
+      0100185EH   LINE      ---      ---       #178
+      0100185FH   LINE      ---      ---       #180
+      0100185FH   LINE      ---      ---       #182
+      0100186DH   LINE      ---      ---       #183
+      01001870H   LINE      ---      ---       #184
+      01001870H   LINE      ---      ---       #185
+      01001872H   LINE      ---      ---       #187
+      01001872H   LINE      ---      ---       #188
+      01001893H   LINE      ---      ---       #189
+      010018A4H   LINE      ---      ---       #190
+      010018A4H   LINE      ---      ---       #192
+      010018B1H   LINE      ---      ---       #193
+      010018B7H   LINE      ---      ---       #196
+      010018C7H   LINE      ---      ---       #197
+      010018CAH   LINE      ---      ---       #198
+      010018CBH   LINE      ---      ---       #200
+      010018CBH   LINE      ---      ---       #202
+      010018D9H   LINE      ---      ---       #203
+      010018DFH   LINE      ---      ---       #204
+      010018DFH   LINE      ---      ---       #205
+      010018DFH   LINE      ---      ---       #206
+      00000082H   SYMBOL    DATA     VOID      bc_ptr
+      00000006H   SYMBOL    DATA     VOID      temp
+      020080D5H   SYMBOL    XDATA    VOID      stemp
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010018E0H   BLOCK     CODE     ---       LVL=0
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 21
+
+
+      010018E7H   LINE      ---      ---       #225
+      010018E7H   LINE      ---      ---       #226
+      010018E7H   LINE      ---      ---       #227
+      010018ECH   LINE      ---      ---       #228
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000AFCH   BLOCK     CODE     ---       LVL=0
+      01000AFCH   LINE      ---      ---       #230
+      01000B0CH   LINE      ---      ---       #231
+      01000B0CH   BLOCK     CODE     NEAR LAB  LVL=1
+      01000B0CH   LINE      ---      ---       #238
+      01000B25H   LINE      ---      ---       #239
+      01000B3FH   LINE      ---      ---       #242
+      01000B50H   LINE      ---      ---       #243
+      01000B50H   LINE      ---      ---       #244
+      01000B74H   LINE      ---      ---       #245
+      01000B7CH   LINE      ---      ---       #248
+      01000B8EH   LINE      ---      ---       #249
+      020080DBH   SYMBOL    XDATA    VOID      i
+      020080DCH   SYMBOL    XDATA    VOID      buf_ptr
+      020080DEH   SYMBOL    XDATA    VOID      bc_ptr
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      0100146FH   BLOCK     CODE     ---       LVL=0
+      0100146FH   LINE      ---      ---       #266
+      0100146FH   LINE      ---      ---       #267
+      0100146FH   LINE      ---      ---       #268
+      0100147AH   LINE      ---      ---       #269
+      0100147DH   LINE      ---      ---       #270
+      01001492H   LINE      ---      ---       #271
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01001493H   BLOCK     CODE     ---       LVL=0
+      01001493H   LINE      ---      ---       #274
+      01001493H   LINE      ---      ---       #275
+      01001493H   BLOCK     CODE     NEAR LAB  LVL=1
+      01001493H   LINE      ---      ---       #279
+      0100149AH   LINE      ---      ---       #280
+      0100149AH   LINE      ---      ---       #281
+      010014A1H   LINE      ---      ---       #282
+      010014A1H   LINE      ---      ---       #283
+      010014A8H   LINE      ---      ---       #284
+      010014A9H   LINE      ---      ---       #286
+      010014A9H   LINE      ---      ---       #287
+      010014AFH   LINE      ---      ---       #288
+      010014B4H   LINE      ---      ---       #289
+      010014BAH   LINE      ---      ---       #290
+      010014BBH   LINE      ---      ---       #292
+      010014BBH   LINE      ---      ---       #294
+      010014CCH   LINE      ---      ---       #297
+      010014D3H   LINE      ---      ---       #298
+      010014D3H   LINE      ---      ---       #299
+      010014F3H   LINE      ---      ---       #300
+      010014F6H   LINE      ---      ---       #302
+      01001500H   LINE      ---      ---       #303
+      01001506H   LINE      ---      ---       #306
+      0100150BH   LINE      ---      ---       #309
+      01001515H   LINE      ---      ---       #310
+      0100151CH   LINE      ---      ---       #313
+      00000007H   SYMBOL    DATA     VOID      size
+      00000006H   SYMBOL    DATA     VOID      i
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 22
+
+
+      010012F8H   BLOCK     CODE     ---       LVL=0
+      010012F8H   LINE      ---      ---       #316
+      010012F8H   LINE      ---      ---       #317
+      010012F8H   BLOCK     CODE     NEAR LAB  LVL=1
+      010012F8H   LINE      ---      ---       #320
+      01001339H   LINE      ---      ---       #322
+      0100134AH   LINE      ---      ---       #323
+      0100134AH   LINE      ---      ---       #324
+      0100134AH   LINE      ---      ---       #325
+      01001367H   LINE      ---      ---       #326
+      01001369H   LINE      ---      ---       #327
+      01001369H   LINE      ---      ---       #328
+      01001369H   LINE      ---      ---       #329
+      01001369H   LINE      ---      ---       #330
+      01001369H   LINE      ---      ---       #331
+      01001369H   LINE      ---      ---       #332
+      0100136FH   LINE      ---      ---       #333
+      01001370H   LINE      ---      ---       #334
+      01001370H   LINE      ---      ---       #335
+      01001376H   LINE      ---      ---       #336
+      01001377H   LINE      ---      ---       #337
+      01001377H   LINE      ---      ---       #338
+      01001377H   LINE      ---      ---       #339
+      0100137DH   LINE      ---      ---       #340
+      0100137DH   LINE      ---      ---       #341
+      0100137DH   LINE      ---      ---       #342
+      020080F8H   SYMBOL    XDATA    VOID      data_ptr
+      020080FBH   SYMBOL    XDATA    VOID      data_size
+      00000007H   SYMBOL    DATA     VOID      ret
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010018F1H   BLOCK     CODE     ---       LVL=0
+      010018F1H   LINE      ---      ---       #344
+      010018F1H   LINE      ---      ---       #345
+      010018F1H   BLOCK     CODE     NEAR LAB  LVL=1
+      010018F1H   LINE      ---      ---       #348
+      010018F9H   LINE      ---      ---       #349
+      010018F9H   LINE      ---      ---       #350
+      010018FFH   LINE      ---      ---       #351
+      010018FFH   LINE      ---      ---       #352
+      010018FFH   LINE      ---      ---       #353
+      01001901H   LINE      ---      ---       #355
+      01001901H   LINE      ---      ---       #356
+      0100191DH   LINE      ---      ---       #358
+      0100191DH   LINE      ---      ---       #359
+      0100191DH   LINE      ---      ---       #360
+      0100191FH   LINE      ---      ---       #361
+      01001929H   LINE      ---      ---       #362
+      01001929H   LINE      ---      ---       #363
+      0100192DH   LINE      ---      ---       #364
+      0100193EH   LINE      ---      ---       #365
+      0100193EH   LINE      ---      ---       #366
+      0100193EH   LINE      ---      ---       #367
+      01001945H   LINE      ---      ---       #368
+      01001945H   LINE      ---      ---       #369
+      0100194BH   LINE      ---      ---       #370
+      0100194DH   LINE      ---      ---       #372
+      0100194DH   LINE      ---      ---       #373
+      01001952H   LINE      ---      ---       #374
+      01001952H   LINE      ---      ---       #376
+      01001972H   LINE      ---      ---       #377
+      01001972H   LINE      ---      ---       #378
+      01001974H   LINE      ---      ---       #379
+      01001974H   LINE      ---      ---       #380
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 23
+
+
+      01001975H   LINE      ---      ---       #381
+      01001975H   LINE      ---      ---       #382
+      01001977H   LINE      ---      ---       #383
+      01001977H   LINE      ---      ---       #384
+      0100197EH   LINE      ---      ---       #385
+      0100197EH   LINE      ---      ---       #386
+      01001989H   LINE      ---      ---       #387
+      0100198BH   LINE      ---      ---       #389
+      0100198BH   LINE      ---      ---       #390
+      010019A5H   LINE      ---      ---       #391
+      010019A5H   LINE      ---      ---       #393
+      010019B7H   LINE      ---      ---       #394
+      010019BDH   LINE      ---      ---       #395
+      010019BEH   LINE      ---      ---       #396
+      010019BEH   LINE      ---      ---       #397
+      010019BEH   LINE      ---      ---       #398
+      010019C0H   LINE      ---      ---       #399
+      010019C0H   LINE      ---      ---       #400
+      010019C0H   LINE      ---      ---       #402
+      010019C0H   LINE      ---      ---       #404
+      010019C6H   LINE      ---      ---       #405
+      010019C6H   LINE      ---      ---       #406
+      020080F8H   SYMBOL    XDATA    VOID      ptr
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      0100137EH   BLOCK     CODE     ---       LVL=0
+      0100137EH   LINE      ---      ---       #408
+      0100137EH   LINE      ---      ---       #409
+      0100137EH   LINE      ---      ---       #411
+      01001395H   LINE      ---      ---       #412
+      01001395H   LINE      ---      ---       #413
+      01001395H   LINE      ---      ---       #414
+      010013AEH   LINE      ---      ---       #416
+      010013AEH   LINE      ---      ---       #417
+      010013B0H   LINE      ---      ---       #418
+      010013B0H   LINE      ---      ---       #420
+      010013C9H   LINE      ---      ---       #422
+      010013C9H   LINE      ---      ---       #423
+      010013CBH   LINE      ---      ---       #424
+      010013CBH   LINE      ---      ---       #426
+      010013D2H   LINE      ---      ---       #427
+      010013D2H   LINE      ---      ---       #428
+      010013E6H   LINE      ---      ---       #429
+      010013E6H   LINE      ---      ---       #430
+      010013E8H   LINE      ---      ---       #432
+      010013E8H   LINE      ---      ---       #433
+      010013EFH   LINE      ---      ---       #434
+      010013EFH   LINE      ---      ---       #435
+      01001464H   LINE      ---      ---       #437
+      01001466H   LINE      ---      ---       #438
+      01001466H   LINE      ---      ---       #440
+      01001466H   LINE      ---      ---       #445
+      01001466H   LINE      ---      ---       #446
+      01001466H   LINE      ---      ---       #447
+      01001466H   LINE      ---      ---       #448
+      01001466H   LINE      ---      ---       #449
+      01001466H   LINE      ---      ---       #450
+      0100146CH   LINE      ---      ---       #451
+      0100146DH   LINE      ---      ---       #452
+      0100146DH   LINE      ---      ---       #453
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01001198H   BLOCK     CODE     ---       LVL=0
+      01001198H   LINE      ---      ---       #458
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 24
+
+
+      01001198H   LINE      ---      ---       #459
+      01001198H   LINE      ---      ---       #461
+      010011A0H   LINE      ---      ---       #462
+      010011A8H   LINE      ---      ---       #463
+      010011B0H   LINE      ---      ---       #464
+      010011B8H   LINE      ---      ---       #465
+      010011C0H   LINE      ---      ---       #466
+      010011C8H   LINE      ---      ---       #467
+      010011D1H   LINE      ---      ---       #468
+      010011D1H   LINE      ---      ---       #469
+      010011D7H   LINE      ---      ---       #470
+      010011D7H   LINE      ---      ---       #473
+      010011E1H   LINE      ---      ---       #474
+      010011E1H   LINE      ---      ---       #475
+      01001212H   LINE      ---      ---       #476
+      01001212H   LINE      ---      ---       #477
+      01001212H   LINE      ---      ---       #478
+      01001214H   LINE      ---      ---       #479
+      01001214H   LINE      ---      ---       #480
+      01001214H   LINE      ---      ---       #481
+      01001217H   LINE      ---      ---       #482
+      01001217H   LINE      ---      ---       #483
+      01001217H   LINE      ---      ---       #484
+      01001217H   LINE      ---      ---       #485
+      01001223H   LINE      ---      ---       #486
+      01001223H   LINE      ---      ---       #487
+      01001223H   LINE      ---      ---       #488
+      0100122AH   LINE      ---      ---       #489
+      0100122AH   LINE      ---      ---       #490
+      01001234H   LINE      ---      ---       #491
+      0100123AH   LINE      ---      ---       #493
+      0100123EH   LINE      ---      ---       #494
+      0100123EH   LINE      ---      ---       #495
+      01001240H   LINE      ---      ---       #497
+      01001240H   LINE      ---      ---       #498
+      01001240H   LINE      ---      ---       #499
+      01001240H   LINE      ---      ---       #500
+      01001242H   LINE      ---      ---       #502
+      01001242H   LINE      ---      ---       #503
+      01001248H   LINE      ---      ---       #504
+      01001248H   LINE      ---      ---       #505
+      01001252H   LINE      ---      ---       #506
+      01001258H   LINE      ---      ---       #508
+      0100125EH   LINE      ---      ---       #509
+      0100125EH   LINE      ---      ---       #510
+      01001260H   LINE      ---      ---       #512
+      01001260H   LINE      ---      ---       #513
+      01001260H   LINE      ---      ---       #514
+      01001260H   LINE      ---      ---       #515
+      01001262H   LINE      ---      ---       #516
+      01001262H   LINE      ---      ---       #517
+      01001262H   LINE      ---      ---       #518
+      01001262H   LINE      ---      ---       #519
+      01001264H   LINE      ---      ---       #520
+      01001264H   LINE      ---      ---       #521
+      01001264H   LINE      ---      ---       #523
+      01001264H   LINE      ---      ---       #524
+      0100126AH   LINE      ---      ---       #525
+      0100126FH   LINE      ---      ---       #526
+      01001270H   LINE      ---      ---       #527
+      01001270H   LINE      ---      ---       #528
+      0100127BH   LINE      ---      ---       #529
+      0100127BH   LINE      ---      ---       #530
+      0100127BH   LINE      ---      ---       #531
+      01001280H   LINE      ---      ---       #532
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 25
+
+
+      01001285H   LINE      ---      ---       #533
+      01001286H   LINE      ---      ---       #534
+      01001286H   LINE      ---      ---       #535
+      01001289H   LINE      ---      ---       #536
+      01001289H   LINE      ---      ---       #537
+      0100128BH   LINE      ---      ---       #538
+      0100128BH   LINE      ---      ---       #539
+      0100128BH   LINE      ---      ---       #540
+      0100128DH   LINE      ---      ---       #541
+      0100128DH   LINE      ---      ---       #542
+      0100128DH   LINE      ---      ---       #543
+      0100128DH   LINE      ---      ---       #544
+      01001297H   LINE      ---      ---       #545
+      01001297H   LINE      ---      ---       #546
+      01001297H   LINE      ---      ---       #547
+      0100129DH   LINE      ---      ---       #548
+      010012A2H   LINE      ---      ---       #549
+      010012A8H   LINE      ---      ---       #550
+      010012A9H   LINE      ---      ---       #551
+      010012A9H   LINE      ---      ---       #552
+      010012AFH   LINE      ---      ---       #553
+      010012B6H   LINE      ---      ---       #554
+      010012BAH   LINE      ---      ---       #555
+      010012BFH   LINE      ---      ---       #556
+      010012C0H   LINE      ---      ---       #557
+      010012C0H   LINE      ---      ---       #558
+      010012C0H   LINE      ---      ---       #559
+      010012C2H   LINE      ---      ---       #560
+      010012C2H   LINE      ---      ---       #561
+      010012C2H   LINE      ---      ---       #562
+      010012C2H   LINE      ---      ---       #563
+      010012CAH   LINE      ---      ---       #564
+      010012D0H   LINE      ---      ---       #565
+      010012D1H   LINE      ---      ---       #566
+      010012D1H   LINE      ---      ---       #567
+      010012D1H   LINE      ---      ---       #568
+      010012D1H   LINE      ---      ---       #569
+      010012D1H   LINE      ---      ---       #570
+      010012D1H   LINE      ---      ---       #571
+      010012D3H   LINE      ---      ---       #572
+      010012D3H   LINE      ---      ---       #573
+      010012D3H   LINE      ---      ---       #575
+      010012DEH   LINE      ---      ---       #576
+      010012DEH   LINE      ---      ---       #577
+      010012E8H   LINE      ---      ---       #578
+      010012E8H   LINE      ---      ---       #581
+      010012EEH   LINE      ---      ---       #582
+      010012EFH   LINE      ---      ---       #584
+      010012EFH   LINE      ---      ---       #585
+      010012F1H   LINE      ---      ---       #586
+      010012F1H   LINE      ---      ---       #588
+      010012F1H   LINE      ---      ---       #590
+      010012F1H   LINE      ---      ---       #591
+      010012F7H   LINE      ---      ---       #592
+      010012F7H   LINE      ---      ---       #593
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010017B5H   BLOCK     CODE     ---       LVL=0
+      010017B5H   LINE      ---      ---       #595
+      010017B5H   LINE      ---      ---       #596
+      010017B5H   BLOCK     CODE     NEAR LAB  LVL=1
+      010017B5H   LINE      ---      ---       #597
+      010017B7H   LINE      ---      ---       #598
+      010017BEH   LINE      ---      ---       #600
+      010017C5H   LINE      ---      ---       #601
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 26
+
+
+      010017C5H   LINE      ---      ---       #602
+      010017CCH   LINE      ---      ---       #603
+      010017CCH   LINE      ---      ---       #604
+      010017CDH   LINE      ---      ---       #605
+      010017CDH   LINE      ---      ---       #606
+      010017CDH   LINE      ---      ---       #608
+      010017D3H   LINE      ---      ---       #610
+      010017E1H   LINE      ---      ---       #611
+      010017E1H   LINE      ---      ---       #612
+      010017F2H   LINE      ---      ---       #613
+      010017F2H   LINE      ---      ---       #614
+      00000005H   SYMBOL    DATA     VOID      allow_remote_wu
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01001758H   BLOCK     CODE     ---       LVL=0
+      01001758H   LINE      ---      ---       #616
+      01001758H   LINE      ---      ---       #617
+      01001758H   LINE      ---      ---       #618
+      0100175EH   LINE      ---      ---       #619
+      01001763H   LINE      ---      ---       #620
+      01001765H   LINE      ---      ---       #621
+      01001769H   LINE      ---      ---       #622
+      01001783H   LINE      ---      ---       #623
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      010019C7H   BLOCK     CODE     ---       LVL=0
+      010019E4H   LINE      ---      ---       #626
+      010019E4H   BLOCK     CODE     NEAR LAB  LVL=1
+      010019E4H   LINE      ---      ---       #636
+      010019EBH   LINE      ---      ---       #637
+      010019EBH   LINE      ---      ---       #639
+      010019EEH   LINE      ---      ---       #642
+      010019F5H   LINE      ---      ---       #643
+      010019F5H   LINE      ---      ---       #646
+      010019FCH   LINE      ---      ---       #649
+      010019FDH   LINE      ---      ---       #650
+      010019FEH   LINE      ---      ---       #652
+      010019FFH   LINE      ---      ---       #655
+      01001A01H   LINE      ---      ---       #658
+      01001A03H   LINE      ---      ---       #662
+      01001A04H   LINE      ---      ---       #666
+      01001A0BH   LINE      ---      ---       #669
+      01001A0FH   LINE      ---      ---       #670
+      01001A0FH   LINE      ---      ---       #671
+      01001A11H   LINE      ---      ---       #673
+      01001A11H   LINE      ---      ---       #675
+      01001A18H   LINE      ---      ---       #676
+      01001A18H   LINE      ---      ---       #678
+      01001A22H   LINE      ---      ---       #679
+      01001A22H   LINE      ---      ---       #680
+      01001A25H   LINE      ---      ---       #681
+      01001A27H   LINE      ---      ---       #683
+      01001A27H   LINE      ---      ---       #684
+      01001A2AH   LINE      ---      ---       #685
+      01001A2AH   LINE      ---      ---       #688
+      01001A36H   LINE      ---      ---       #689
+      00000007H   SYMBOL    DATA     VOID      t
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      01001784H   BLOCK     CODE     ---       LVL=0
+      01001784H   LINE      ---      ---       #692
+      0100178AH   LINE      ---      ---       #693
+      0100178AH   LINE      ---      ---       #694
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 27
+
+
+      0100178EH   LINE      ---      ---       #695
+      0100178EH   LINE      ---      ---       #696
+      01001791H   LINE      ---      ---       #697
+      01001792H   LINE      ---      ---       #698
+      01001796H   LINE      ---      ---       #699
+      01001796H   LINE      ---      ---       #700
+      0100179DH   LINE      ---      ---       #701
+      0100179EH   LINE      ---      ---       #702
+      010017A5H   LINE      ---      ---       #703
+      010017A5H   LINE      ---      ---       #704
+      010017ACH   LINE      ---      ---       #705
+      010017ADH   LINE      ---      ---       #706
+      010017B0H   LINE      ---      ---       #707
+      010017B0H   LINE      ---      ---       #708
+      010017B1H   LINE      ---      ---       #709
+      010017B2H   LINE      ---      ---       #711
+      010017B2H   LINE      ---      ---       #712
+      010017B4H   LINE      ---      ---       #713
+      010017B4H   LINE      ---      ---       #714
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100151DH   BLOCK     CODE     ---       LVL=0
+      0100153AH   LINE      ---      ---       #716
+      0100153AH   BLOCK     CODE     NEAR LAB  LVL=1
+      0100153AH   LINE      ---      ---       #724
+      01001578H   LINE      ---      ---       #725
+      01001578H   LINE      ---      ---       #726
+      01001578H   LINE      ---      ---       #727
+      0100157EH   LINE      ---      ---       #728
+      01001580H   LINE      ---      ---       #729
+      01001582H   LINE      ---      ---       #730
+      01001582H   LINE      ---      ---       #731
+      01001588H   LINE      ---      ---       #732
+      0100158AH   LINE      ---      ---       #733
+      0100158AH   LINE      ---      ---       #734
+      01001590H   LINE      ---      ---       #735
+      01001599H   LINE      ---      ---       #736
+      0100159BH   LINE      ---      ---       #737
+      0100159DH   LINE      ---      ---       #738
+      010015A1H   LINE      ---      ---       #739
+      010015A3H   LINE      ---      ---       #740
+      010015A3H   LINE      ---      ---       #741
+      010015A9H   LINE      ---      ---       #742
+      010015ABH   LINE      ---      ---       #743
+      010015ADH   LINE      ---      ---       #744
+      010015ADH   LINE      ---      ---       #745
+      010015B3H   LINE      ---      ---       #746
+      010015B5H   LINE      ---      ---       #747
+      010015B7H   LINE      ---      ---       #748
+      010015B7H   LINE      ---      ---       #749
+      010015BDH   LINE      ---      ---       #750
+      010015BFH   LINE      ---      ---       #751
+      010015C1H   LINE      ---      ---       #752
+      010015C1H   LINE      ---      ---       #753
+      010015C7H   LINE      ---      ---       #754
+      010015CCH   LINE      ---      ---       #755
+      010015CEH   LINE      ---      ---       #756
+      010015D0H   LINE      ---      ---       #757
+      010015D0H   LINE      ---      ---       #758
+      010015D0H   LINE      ---      ---       #759
+      010015D0H   LINE      ---      ---       #760
+      010015D0H   LINE      ---      ---       #761
+      010015D0H   LINE      ---      ---       #763
+      010015DFH   LINE      ---      ---       #765
+      010015F0H   LINE      ---      ---       #767
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 28
+
+
+      01001607H   LINE      ---      ---       #768
+      01001624H   LINE      ---      ---       #769
+      0100163EH   LINE      ---      ---       #772
+      01001675H   LINE      ---      ---       #773
+      01001675H   LINE      ---      ---       #774
+      01001677H   LINE      ---      ---       #775
+      01001677H   LINE      ---      ---       #776
+      01001677H   LINE      ---      ---       #777
+      01001677H   LINE      ---      ---       #778
+      01001677H   LINE      ---      ---       #779
+      01001677H   LINE      ---      ---       #781
+      01001686H   LINE      ---      ---       #784
+      01001697H   LINE      ---      ---       #786
+      010016AEH   LINE      ---      ---       #787
+      010016C9H   LINE      ---      ---       #788
+      010016E1H   LINE      ---      ---       #791
+      0100172DH   LINE      ---      ---       #792
+      0100173DH   LINE      ---      ---       #793
+      0100173DH   LINE      ---      ---       #794
+      0100173DH   LINE      ---      ---       #795
+      0100173DH   LINE      ---      ---       #796
+      0100173DH   LINE      ---      ---       #797
+      020080F0H   SYMBOL    XDATA    VOID      ep
+      020080F1H   SYMBOL    XDATA    VOID      ret
+      020080F2H   SYMBOL    XDATA    VOID      cs_ptr
+      020080F4H   SYMBOL    XDATA    VOID      buf_ptr
+      020080F6H   SYMBOL    XDATA    VOID      bc_ptr
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      ---         MODULE    ---      ---       HAL_USB_HID
+      01000C5AH   PUBLIC    CODE     ---       _?hal_usb_hid_device_req_proc
+
+      01000C5AH   BLOCK     CODE     ---       LVL=0
+      01000C5AH   LINE      ---      ---       #26
+      01000C6EH   BLOCK     CODE     NEAR LAB  LVL=1
+      01000C6EH   LINE      ---      ---       #28
+      01000C76H   LINE      ---      ---       #29
+      01000C88H   LINE      ---      ---       #31
+      01000CA3H   LINE      ---      ---       #32
+      01000CA3H   LINE      ---      ---       #33
+      01000CB4H   LINE      ---      ---       #34
+      01000CB4H   LINE      ---      ---       #35
+      01000CB4H   LINE      ---      ---       #36
+      01000CBDH   LINE      ---      ---       #37
+      01000CFCH   LINE      ---      ---       #38
+      01000D3AH   LINE      ---      ---       #39
+      01000D3AH   LINE      ---      ---       #40
+      01000D3CH   LINE      ---      ---       #41
+      01000D3CH   LINE      ---      ---       #42
+      01000D45H   LINE      ---      ---       #43
+      01000D84H   LINE      ---      ---       #44
+      01000DBBH   LINE      ---      ---       #45
+      01000DBBH   LINE      ---      ---       #46
+      01000DBDH   LINE      ---      ---       #47
+      01000DBDH   LINE      ---      ---       #48
+      01000DBDH   LINE      ---      ---       #49
+      01000DBDH   LINE      ---      ---       #50
+      01000DBDH   LINE      ---      ---       #51
+      01000DD4H   LINE      ---      ---       #52
+      01000DD4H   LINE      ---      ---       #53
+      01000DF7H   LINE      ---      ---       #54
+      01000DF7H   LINE      ---      ---       #55
+      01000DF7H   LINE      ---      ---       #56
+      01000E00H   LINE      ---      ---       #60
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 29
+
+
+      01000E09H   LINE      ---      ---       #61
+      01000E26H   LINE      ---      ---       #62
+      01000E36H   LINE      ---      ---       #63
+      01000E36H   LINE      ---      ---       #64
+      01000E38H   LINE      ---      ---       #65
+      01000E38H   LINE      ---      ---       #66
+      01000E41H   LINE      ---      ---       #67
+      01000E50H   LINE      ---      ---       #68
+      01000E52H   LINE      ---      ---       #69
+      01000E52H   LINE      ---      ---       #70
+      01000E5BH   LINE      ---      ---       #72
+      01000E6BH   LINE      ---      ---       #73
+      01000E6DH   LINE      ---      ---       #74
+      01000E6DH   LINE      ---      ---       #75
+      01000E76H   LINE      ---      ---       #76
+      01000EA9H   LINE      ---      ---       #77
+      01000EC6H   LINE      ---      ---       #78
+      01000ED9H   LINE      ---      ---       #79
+      01000EE9H   LINE      ---      ---       #80
+      01000EEBH   LINE      ---      ---       #81
+      01000EEBH   LINE      ---      ---       #82
+      01000EF4H   LINE      ---      ---       #84
+      01000F06H   LINE      ---      ---       #85
+      01000F06H   LINE      ---      ---       #86
+      01000F1EH   LINE      ---      ---       #87
+      01000F20H   LINE      ---      ---       #89
+      01000F20H   LINE      ---      ---       #90
+      01000F3DH   LINE      ---      ---       #91
+      01000F3DH   LINE      ---      ---       #93
+      01000F4DH   LINE      ---      ---       #97
+      01000F4FH   LINE      ---      ---       #98
+      01000F4FH   LINE      ---      ---       #99
+      01000F4FH   LINE      ---      ---       #100
+      01000F68H   LINE      ---      ---       #101
+      01000F68H   LINE      ---      ---       #102
+      01000F71H   LINE      ---      ---       #103
+      01000F84H   LINE      ---      ---       #104
+      01000F86H   LINE      ---      ---       #105
+      01000F8AH   LINE      ---      ---       #106
+      01000F8AH   LINE      ---      ---       #108
+      01000F9DH   LINE      ---      ---       #109
+      01000FA6H   LINE      ---      ---       #110
+      01000FA6H   LINE      ---      ---       #111
+      01000FA6H   LINE      ---      ---       #112
+      01000FA6H   LINE      ---      ---       #113
+      01000FA6H   LINE      ---      ---       #114
+      01000FA6H   LINE      ---      ---       #115
+      01000FA6H   LINE      ---      ---       #116
+      01000FA6H   LINE      ---      ---       #118
+      01000FAEH   LINE      ---      ---       #119
+      00000000H   SYMBOL    XSTK     VOID      retval
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      ---         MODULE    ---      ---       HAL_NRF_HW
+      0100004EH   PUBLIC    CODE     ---       _hal_nrf_rw
+
+      0100004EH   BLOCK     CODE     ---       LVL=0
+      0100004EH   LINE      ---      ---       #25
+      0100004EH   LINE      ---      ---       #26
+      0100004EH   LINE      ---      ---       #27
+      01000050H   LINE      ---      ---       #28
+      01000052H   LINE      ---      ---       #30
+      01000055H   LINE      ---      ---       #31
+      01000057H   LINE      ---      ---       #32
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 30
+
+
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       HAL_SPI
+      00000006H   SYMBOL    DATA     VOID      smctl
+      00000005H   SYMBOL    DATA     VOID      temp
+
+      ---         MODULE    ---      ---       HAL_NRF
+      020080E4H   PUBLIC    XDATA    BYTE      ?_hal_nrf_write_multibyte_reg?BYTE
+      010005DBH   PUBLIC    CODE     ---       _hal_nrf_write_multibyte_reg
+      010008E0H   PUBLIC    CODE     ---       _hal_nrf_read_multibyte_reg
+      01000596H   PUBLIC    CODE     ---       _hal_nrf_write_reg
+      010008C8H   PUBLIC    CODE     ---       _hal_nrf_read_reg
+      01000BAFH   PUBLIC    CODE     ---       hal_nrf_nop
+      0100003FH   PUBLIC    CODE     ---       hal_nrf_flush_tx
+      01000BA5H   PUBLIC    CODE     ---       hal_nrf_flush_rx
+      01000B98H   PUBLIC    CODE     ---       hal_nrf_get_rx_data_source
+      0100005EH   PUBLIC    CODE     ---       hal_nrf_read_rx_payload_width
+      01000B8FH   PUBLIC    CODE     ---       hal_nrf_get_address_width
+      00000007H   SYMBOL    DATA     VOID      retval
+
+      01000B8FH   BLOCK     CODE     ---       LVL=0
+      01000B8FH   LINE      ---      ---       #436
+      01000B8FH   LINE      ---      ---       #437
+      01000B8FH   LINE      ---      ---       #438
+      01000B97H   LINE      ---      ---       #439
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100005EH   BLOCK     CODE     ---       LVL=0
+      0100005EH   LINE      ---      ---       #673
+      0100005EH   LINE      ---      ---       #674
+      0100005EH   LINE      ---      ---       #675
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000B98H   BLOCK     CODE     ---       LVL=0
+      01000B98H   LINE      ---      ---       #683
+      01000B98H   LINE      ---      ---       #684
+      01000B98H   LINE      ---      ---       #685
+      01000BA4H   LINE      ---      ---       #686
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000BA5H   BLOCK     CODE     ---       LVL=0
+      01000BA5H   LINE      ---      ---       #700
+      01000BA5H   LINE      ---      ---       #701
+      01000BA5H   LINE      ---      ---       #702
+      01000BA7H   LINE      ---      ---       #703
+      01000BACH   LINE      ---      ---       #704
+      01000BAEH   LINE      ---      ---       #705
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      0100003FH   BLOCK     CODE     ---       LVL=0
+      0100003FH   LINE      ---      ---       #707
+      0100003FH   LINE      ---      ---       #708
+      0100003FH   LINE      ---      ---       #709
+      01000041H   LINE      ---      ---       #710
+      01000045H   LINE      ---      ---       #711
+      01000047H   LINE      ---      ---       #712
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000BAFH   BLOCK     CODE     ---       LVL=0
+      01000BAFH   LINE      ---      ---       #714
+      01000BAFH   LINE      ---      ---       #715
+      01000BAFH   BLOCK     CODE     NEAR LAB  LVL=1
+      01000BAFH   LINE      ---      ---       #718
+      01000BB1H   LINE      ---      ---       #719
+      01000BB6H   LINE      ---      ---       #720
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 31
+
+
+      01000BB8H   LINE      ---      ---       #722
+      01000BB8H   LINE      ---      ---       #723
+      00000007H   SYMBOL    DATA     VOID      retval
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010008C8H   BLOCK     CODE     ---       LVL=0
+      010008C8H   LINE      ---      ---       #743
+      010008C8H   LINE      ---      ---       #744
+      010008C8H   BLOCK     CODE     NEAR LAB  LVL=1
+      010008C8H   LINE      ---      ---       #747
+      010008CAH   LINE      ---      ---       #749
+      010008CEH   LINE      ---      ---       #750
+      010008D1H   LINE      ---      ---       #751
+      010008D3H   LINE      ---      ---       #753
+      010008D8H   LINE      ---      ---       #754
+      010008DBH   LINE      ---      ---       #755
+      010008DDH   LINE      ---      ---       #757
+      010008DFH   LINE      ---      ---       #759
+      010008DFH   LINE      ---      ---       #760
+      00000007H   SYMBOL    DATA     VOID      temp
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      0100057EH   BLOCK     CODE     ---       LVL=0
+      01000596H   LINE      ---      ---       #762
+      01000596H   LINE      ---      ---       #763
+      01000596H   BLOCK     CODE     NEAR LAB  LVL=1
+      01000596H   LINE      ---      ---       #770
+      01000598H   LINE      ---      ---       #772
+      0100059FH   LINE      ---      ---       #773
+      010005A2H   LINE      ---      ---       #774
+      010005A4H   LINE      ---      ---       #776
+      010005AAH   LINE      ---      ---       #777
+      010005ADH   LINE      ---      ---       #778
+      010005B3H   LINE      ---      ---       #780
+      010005B5H   LINE      ---      ---       #782
+      010005B5H   LINE      ---      ---       #783
+      00000007H   SYMBOL    DATA     VOID      retval
+      02008105H   SYMBOL    XDATA    VOID      dummy
+      ---         BLOCKEND  CODE     ---       LVL=1
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010008E0H   BLOCK     CODE     ---       LVL=0
+      010008E0H   LINE      ---      ---       #804
+      010008F0H   LINE      ---      ---       #805
+      010008F0H   BLOCK     CODE     NEAR LAB  LVL=1
+      010008F0H   LINE      ---      ---       #810
+      010008F6H   LINE      ---      ---       #812
+      010008FEH   LINE      ---      ---       #814
+      0100090EH   LINE      ---      ---       #815
+      0100090EH   LINE      ---      ---       #816
+      0100090EH   LINE      ---      ---       #817
+      0100090EH   LINE      ---      ---       #818
+      0100090EH   LINE      ---      ---       #819
+      01000917H   LINE      ---      ---       #820
+      01000919H   LINE      ---      ---       #821
+      01000920H   LINE      ---      ---       #822
+      01000922H   LINE      ---      ---       #824
+      01000922H   LINE      ---      ---       #825
+      01000929H   LINE      ---      ---       #826
+      0100092EH   LINE      ---      ---       #827
+      0100092EH   LINE      ---      ---       #828
+      01000938H   LINE      ---      ---       #829
+      0100093AH   LINE      ---      ---       #830
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 32
+
+
+      0100093FH   LINE      ---      ---       #831
+      01000941H   LINE      ---      ---       #838
+      01000941H   LINE      ---      ---       #839
+      0100094AH   LINE      ---      ---       #840
+      0100094AH   LINE      ---      ---       #841
+      0100094AH   LINE      ---      ---       #843
+      01000951H   LINE      ---      ---       #844
+      020080E8H   SYMBOL    XDATA    VOID      ctr
+      020080E9H   SYMBOL    XDATA    VOID      length
+      020080EAH   SYMBOL    XDATA    VOID      memtype
+      020080EBH   SYMBOL    XDATA    VOID      read_byte
+      020080ECH   SYMBOL    XDATA    VOID      first_round
+      01000951H   BLOCK     CODE     NEAR LAB  LVL=2
+      01000951H   LINE      ---      ---       #845
+      0100095BH   LINE      ---      ---       #846
+      01000999H   LINE      ---      ---       #847
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      01000999H   BLOCK     CODE     NEAR LAB  LVL=2
+      0100099BH   LINE      ---      ---       #848
+      010009A0H   LINE      ---      ---       #849
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      010009A0H   BLOCK     CODE     NEAR LAB  LVL=2
+      010009A0H   LINE      ---      ---       #850
+      010009B1H   LINE      ---      ---       #851
+      01000A06H   LINE      ---      ---       #852
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      01000A06H   BLOCK     CODE     NEAR LAB  LVL=2
+      01000A08H   LINE      ---      ---       #853
+      01000A10H   LINE      ---      ---       #854
+      020080EDH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      01000A10H   LINE      ---      ---       #855
+      01000A1AH   LINE      ---      ---       #856
+      01000A58H   LINE      ---      ---       #857
+      01000A58H   LINE      CODE     ---       #857
+      ---         BLOCKEND  CODE     ---       LVL=0
+
+      010005D3H   BLOCK     CODE     ---       LVL=0
+      010005DBH   LINE      ---      ---       #878
+      010005E6H   LINE      ---      ---       #882
+      010005E6H   BLOCK     CODE     NEAR LAB  LVL=1
+      010005E6H   LINE      ---      ---       #887
+      010005EBH   LINE      ---      ---       #889
+      010005EDH   LINE      ---      ---       #890
+      010005F1H   LINE      ---      ---       #892
+      010005F4H   LINE      ---      ---       #893
+      00000005H   SYMBOL    DATA     VOID      memtype
+      00000006H   SYMBOL    DATA     VOID      next
+      020080E9H   SYMBOL    XDATA    VOID      dummy
+      010005F4H   BLOCK     CODE     NEAR LAB  LVL=2
+      010005F4H   LINE      ---      ---       #894
+      010005FBH   LINE      ---      ---       #895
+      0100061AH   LINE      ---      ---       #896
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      020080EAH   SYMBOL    XDATA    VOID      buf
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 33
+
+
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      0100061AH   BLOCK     CODE     NEAR LAB  LVL=2
+      0100061CH   LINE      ---      ---       #897
+      01000621H   LINE      ---      ---       #898
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      01000621H   BLOCK     CODE     NEAR LAB  LVL=2
+      01000621H   LINE      ---      ---       #899
+      01000631H   LINE      ---      ---       #900
+      01000661H   LINE      ---      ---       #901
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      01000661H   BLOCK     CODE     NEAR LAB  LVL=2
+      01000663H   LINE      ---      ---       #902
+      01000668H   LINE      ---      ---       #903
+      020080EAH   SYMBOL    XDATA    VOID      buf
+      ---         BLOCKEND  CODE     ---       LVL=2
+      01000668H   LINE      ---      ---       #904
+      01000672H   LINE      ---      ---       #905
+      01000691H   LINE      ---      ---       #906
+      01000691H   LINE      CODE     ---       #906
+      ---         BLOCKEND  CODE     ---       LVL=0
+      01000A5AH   LINE      ---      ---       #859
+      01000A5AH   LINE      ---      ---       #860
+      01000A6FH   LINE      ---      ---       #861
+      01000AC4H   LINE      ---      ---       #862
+      01000AC4H   LINE      ---      ---       #864
+      01000AC6H   LINE      ---      ---       #866
+      01000AD2H   LINE      ---      ---       #867
+      01000693H   LINE      ---      ---       #908
+      01000693H   LINE      ---      ---       #909
+      010006A8H   LINE      ---      ---       #910
+      010006D4H   LINE      ---      ---       #911
+      010006D4H   LINE      ---      ---       #913
+      010006D7H   LINE      ---      ---       #914
+      010006DDH   LINE      ---      ---       #915
+      010006DFH   LINE      ---      ---       #916
+
+      ---         MODULE    ---      ---       HAL_DELAY
+      0100002DH   PUBLIC    CODE     ---       _delay_ms
+      01000549H   PUBLIC    CODE     ---       _delay_us
+
+      0100053FH   BLOCK     CODE     ---       LVL=0
+      01000549H   LINE      ---      ---       #37
+      01000549H   LINE      ---      ---       #38
+      01000549H   LINE      ---      ---       #40
+      01000549H   LINE      ---      ---       #41
+      0100054AH   LINE      ---      ---       #42
+      0100054BH   LINE      ---      ---       #43
+      0100054CH   LINE      ---      ---       #44
+      0100054DH   LINE      ---      ---       #45
+      0100054EH   LINE      ---      ---       #46
+      01000557H   LINE      ---      ---       #47
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      01000029H   BLOCK     CODE     ---       LVL=0
+      0100002DH   LINE      ---      ---       #49
+      01000031H   LINE      ---      ---       #50
+      01000031H   LINE      ---      ---       #52
+      01000031H   LINE      ---      ---       #53
+      01000033H   LINE      ---      ---       #55
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 34
+
+
+      01000035H   LINE      ---      ---       #57
+      0100003EH   LINE      ---      ---       #58
+      ---         BLOCKEND  ---      ---       LVL=0
+
+      ---         MODULE    ---      ---       ?C_INIT
+      01000351H   PUBLIC    CODE     ---       ?C_START
+
+      ---         MODULE    ---      ---       ?C?COPY
+      01000136H   PUBLIC    CODE     ---       ?C?COPY
+
+      ---         MODULE    ---      ---       ?C?CLDPTR
+      0100015CH   PUBLIC    CODE     ---       ?C?CLDPTR
+
+      ---         MODULE    ---      ---       ?C?CLDOPTR
+      01000175H   PUBLIC    CODE     ---       ?C?CLDOPTR
+
+      ---         MODULE    ---      ---       ?C?CSTPTR
+      010001A2H   PUBLIC    CODE     ---       ?C?CSTPTR
+
+      ---         MODULE    ---      ---       ?C?IILDX
+      010001B4H   PUBLIC    CODE     ---       ?C?IILDX
+
+      ---         MODULE    ---      ---       ?C?ILDIX
+      010001CAH   PUBLIC    CODE     ---       ?C?ILDIX
+
+      ---         MODULE    ---      ---       ?C?PSTPTR
+      010001E0H   PUBLIC    CODE     ---       ?C?PSTPTR
+
+      ---         MODULE    ---      ---       ?C?PLDOPTR
+      0100022FH   PUBLIC    CODE     ---       ?C?PLDOPTR
+
+      ---         MODULE    ---      ---       ?C?CCASE
+      0100025FH   PUBLIC    CODE     ---       ?C?CCASE
+
+      ---         MODULE    ---      ---       ?C?ICALL
+      01000285H   PUBLIC    CODE     ---       ?C?ICALL
+      01000289H   PUBLIC    CODE     ---       ?C?ICALL2
+
+      ---         MODULE    ---      ---       ?C_XBP
+      00000008H   PUBLIC    DATA     ---       ?C_XBP
+
+      ---         MODULE    ---      ---       ?C_IBP
+      0000000AH   PUBLIC    DATA     ---       ?C_IBP
+
+      ---         MODULE    ---      ---       ?C_PBP
+      0000000BH   PUBLIC    DATA     ---       ?C_PBP
+
+      ---         MODULE    ---      ---       ?C?ADDXBP
+      0100028BH   PUBLIC    CODE     ---       ?C?ADDXBP
+
+      ---         MODULE    ---      ---       ?C?XBPOFF
+      010002AFH   PUBLIC    CODE     ---       ?C?XBPOFF
+
+      ---         MODULE    ---      ---       ?C?PLDIDATA
+      010002BCH   PUBLIC    CODE     ---       ?C?PLDIDATA
+
+      ---         MODULE    ---      ---       ?C?PSTIDATA
+      010002C5H   PUBLIC    CODE     ---       ?C?PSTIDATA
+
+      ---         MODULE    ---      ---       ?C?PLDXDATA
+      010002CEH   PUBLIC    CODE     ---       ?C?PLDXDATA
+
+      ---         MODULE    ---      ---       ?C?PSTXDATA
+      010002D7H   PUBLIC    CODE     ---       ?C?PSTXDATA
+
+LX51 LINKER/LOCATER V4.66.62.0                                                        10/17/2016  12:49:45  PAGE 35
+
+
+      ---         MODULE    ---      ---       ?C?PLDPDATA
+      010002E0H   PUBLIC    CODE     ---       ?C?PLDPDATA
+
+      ---         MODULE    ---      ---       ?C?PSTPDATA
+      010002E9H   PUBLIC    CODE     ---       ?C?PSTPDATA
+
+      ---         MODULE    ---      ---       ?C?PLDCODE
+      010002F2H   PUBLIC    CODE     ---       ?C?PLDCODE
+
+
+
+FUNCTION REGISTER MASKS
+
+
+FUNCTION . . . . . . . . . . . . . . . REG MASK
+================================================
+
+_?reset_cb . . . . . . . . . . . . . . @0x80000000
+_?resume_cb. . . . . . . . . . . . . . @0x80000000
+_delay_ms. . . . . . . . . . . . . . . @0x080008f0
+_delay_us. . . . . . . . . . . . . . . @0x080008c0
+_hal_flash_byte_read . . . . . . . . . @0x0e000880
+_hal_flash_byte_write. . . . . . . . . @0x1e000882
+_hal_flash_bytes_read. . . . . . . . . @0x1e000cc7
+_hal_flash_bytes_write . . . . . . . . @0x1e000c8f
+_hal_flash_page_erase. . . . . . . . . @0x180000c0
+_hal_nrf_read_reg. . . . . . . . . . . @0x08000880
+_hal_nrf_rw. . . . . . . . . . . . . . @0x08000080
+_hal_nrf_write_multibyte_reg . . . . . @0x1e000c6f
+_hal_nrf_write_reg . . . . . . . . . . @0x1e0008c0
+_hal_spi_master_init . . . . . . . . . @0x18000870
+_hal_spi_master_read_write . . . . . . @0x08000080
+_hal_usb_endpoint_config . . . . . . . @0x1e000cff
+_hal_usb_endpoint_stall. . . . . . . . @0x1e0008c6
+_hal_usb_init. . . . . . . . . . . . . @0x0e0008f6
+_hal_usb_send_data . . . . . . . . . . @0x1e000cdf
+hal_nrf_activate_features. . . . . . . @0x80000000
+hal_nrf_flush_rx . . . . . . . . . . . @0x08000080
+hal_nrf_flush_tx . . . . . . . . . . . @0x08000080
+hal_nrf_nop. . . . . . . . . . . . . . @0x08000080
+hal_nrf_reuse_tx . . . . . . . . . . . @0x08000080
+hal_usb_bus_connect. . . . . . . . . . @0x0e000800
+hal_usb_bus_disconnect . . . . . . . . @0x0e000800
+hal_usb_get_address. . . . . . . . . . @0x0e000880
+hal_usb_get_state. . . . . . . . . . . @0x3e000880
+hal_usb_reset. . . . . . . . . . . . . @0x80000000
+hal_usb_sleep. . . . . . . . . . . . . @0x80000000
+hal_usb_wakeup . . . . . . . . . . . . @0x0e0008f0
+nrf_rx_mode. . . . . . . . . . . . . . @0x1e000cef
+nrf_tx_mode. . . . . . . . . . . . . . @0x1e000cef
+
+
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _HAL_NRF_READ_MULTIBYTE_REG/HAL_NRF
+    CALLER1: ?C_C51STARTUP
+    CALLER2: NRF_ISR/MAIN
+
+*** WARNING L15: MULTIPLE CALL TO FUNCTION
+    NAME:    _HAL_NRF_WRITE_MULTIBYTE_REG/HAL_NRF
+    CALLER1: ?C_C51STARTUP
+    CALLER2: NRF_ISR/MAIN
+
+Program Size: data=13.0 xdata=716 const=215 code=6518
+LX51 RUN COMPLETE.  2 WARNING(S),  0 ERROR(S)

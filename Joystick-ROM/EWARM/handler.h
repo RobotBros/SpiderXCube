@@ -1,0 +1,1 @@
+#define TIM6_IRQHandler TIM6_DAC_IRQHandler
