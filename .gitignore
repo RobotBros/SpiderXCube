@@ -118,3 +118,5 @@ fastlane/screenshots
 
 # Apple files
 .DS_Store
+
+OBJ/
